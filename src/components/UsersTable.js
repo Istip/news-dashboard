@@ -1,5 +1,7 @@
 import React from "react"
 import Table from "react-bootstrap/Table"
+import AddUser from "./AddUser"
+import User from "./User"
 
 const users = [
   {
@@ -37,7 +39,7 @@ const users = [
 const UsersTable = () => {
   return (
     <>
-      <h1>Users</h1>
+      <h1 className='pb-3'>Users</h1>
       <Table striped bordered hover size='sm'>
         <thead>
           <tr>
@@ -47,17 +49,11 @@ const UsersTable = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.uuid}>
-              <td>{user.firstname}</td>
-              <td>{user.lastname}</td>
-              <td>
-                <small>{user.email}</small>
-              </td>
-            </tr>
-          ))}
+          <User users={users} />
         </tbody>
       </Table>
+      <hr />
+      <AddUser />
     </>
   )
 }

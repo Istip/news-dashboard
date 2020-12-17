@@ -12,8 +12,7 @@ const MenuBar = () => {
         <li className='menu__list-item'>
           <a href='/'>Posts</a>
         </li>
-        <hr className='mx-5' />
-        <li className='menu__list-item'>
+        <li className='menu__list-item pt-3'>
           <a href='/' className='btn btn-sm btn-outline-danger'>
             Log Out
           </a>
