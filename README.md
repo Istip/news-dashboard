@@ -1,3 +1,3 @@
 # News dashboard
 
-Created using: **React** + ...(adding more soon)
+Created using: **React** + **React-Bootstrap** ...(adding more soon)
