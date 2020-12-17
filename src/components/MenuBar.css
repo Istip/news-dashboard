@@ -1,0 +1,17 @@
+.menu {
+  max-width: 100%;
+  min-width: 200px;
+}
+
+.menu__list {
+  padding: 0;
+  padding-top: 24px;
+}
+
+.menu__list-item {
+  list-style-type: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 100;
+}
