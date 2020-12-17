@@ -18,8 +18,6 @@ function App() {
             <MenuBar />
           </Col>
           <Col className='my-auto pt-3'>
-            <h1>News Dashboard</h1>
-            <p className='lead'>Welcome ADMIN!</p>
             <UsersTable />
           </Col>
         </Row>
