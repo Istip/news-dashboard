@@ -2,7 +2,7 @@ import React from "react"
 
 const User = ({ users, setUsers }) => {
   const deleteUser = () => {
-    setUsers(users.filter((user) => user.id !== users.id))
+    setUsers(users.filter((u) => u.uuid !== users.uuid))
   }
 
   return (

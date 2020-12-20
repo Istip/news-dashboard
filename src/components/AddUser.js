@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
+import uuid from "react-uuid"
 
 const AddUser = ({ users, setUsers }) => {
   const [firstName, setFirstName] = useState("")
@@ -12,9 +13,8 @@ const AddUser = ({ users, setUsers }) => {
     e.preventDefault()
     setUsers([
       ...users,
-      { firstname: firstName, lastname: lastName, email: email },
+      { uuid: uuid(), firstname: firstName, lastname: lastName, email: email },
     ])
-    console.log("Submitted")
     setFirstName("")
     setLastName("")
     setEmail("")

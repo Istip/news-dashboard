@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table"
 import AddUser from "./AddUser"
 import User from "./User"
 
+// USERS STATE
 const UsersTable = () => {
   const [users, setUsers] = useState([
     {
