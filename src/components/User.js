@@ -14,7 +14,7 @@ const User = ({ users, setUsers }) => {
           <td>
             <small>{user.email}</small>
           </td>
-          <td>
+          <td className='text-center'>
             <i
               className='fas fa-trash pr-3 text-danger'
               onClick={deleteUser}
