@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import "./App.css"
 import Header from "./components/Header"
 import MenuBar from "./components/MenuBar"
@@ -13,14 +13,16 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 
 function App() {
+  const [login, setLogin] = useState(true)
+
   return (
     <div className='App'>
       <Router>
-        <Header />
+        <Header login={login} setLogin={setLogin} />
         <Container fluid>
           <Row>
             <Col sm={4} md={4} lg={2}>
-              <MenuBar />
+              <MenuBar login={login} setLogin={setLogin} />
             </Col>
             <Col className='my-auto pt-3'>
               <Switch>

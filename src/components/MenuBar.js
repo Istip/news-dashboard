@@ -2,9 +2,7 @@ import React, { useState } from "react"
 import "./MenuBar.css"
 import { Link } from "react-router-dom"
 
-const MenuBar = () => {
-  const [login, setLogin] = useState(true)
-
+const MenuBar = ({ login, setLogin }) => {
   const loginHandler = (e) => {
     e.preventDefault()
     setLogin(!login)

@@ -3,16 +3,24 @@ import React from "react"
 import logo from "../assets/minic.png"
 import avatar from "../assets/avatar.png"
 
-const NavigationBar = () => {
+const NavigationBar = ({ login }) => {
   return (
     <div className='d-flex justify-content-between p-3 bg-light border border-bottom'>
       <img src={logo} width={32} height={32} alt='MINIC' />
-      <div>
-        <a href='/' className='pr-3'>
-          John Doe
+      {login ? (
+        <>
+          <div>
+            <a href='/' className='pr-3'>
+              John Doe
+            </a>
+            <img src={avatar} width={32} height={32} alt='AVATAR' />
+          </div>
+        </>
+      ) : (
+        <a href='/' className='btn btn-sm btn-outline-danger'>
+          Log in
         </a>
-        <img src={avatar} width={32} height={32} alt='AVATAR' />
-      </div>
+      )}
     </div>
   )
 }
