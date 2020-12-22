@@ -29,15 +29,7 @@ const User = ({ users, setUsers }) => {
           </td>
         </tr>
       ))}
-
-      {users.map((user) => (
-        <UserModal
-          key={user.id}
-          user={user}
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      ))}
+      <UserModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   )
 }

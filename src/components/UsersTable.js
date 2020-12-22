@@ -41,19 +41,25 @@ const UsersTable = () => {
   return (
     <>
       <h1 className='pb-3'>Users</h1>
-      <Table striped bordered hover size='sm'>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>CRUD</th>
-          </tr>
-        </thead>
-        <tbody>
-          <User users={users} setUsers={setUsers} />
-        </tbody>
-      </Table>
+      {users.length ? (
+        <Table striped bordered hover size='sm'>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>CRUD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <User users={users} setUsers={setUsers} />
+          </tbody>
+        </Table>
+      ) : (
+        <div>
+          <h3 className='text-danger'>No users to show!</h3>
+        </div>
+      )}
 
       <hr />
       <AddUser users={users} setUsers={setUsers} />

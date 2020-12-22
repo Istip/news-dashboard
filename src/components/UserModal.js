@@ -2,14 +2,12 @@ import React from "react"
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 
-const UserModal = (props) => {
+function UserModal(props) {
   return (
     <Modal {...props} size='lg' aria-labelledby='edit-modal-centered' centered>
       <Modal.Header closeButton>
         <Modal.Title id='edit-modal-centered'>
-          <h3>
-            {props.user.firstname} {props.user.lastname}
-          </h3>
+          <h3>TITLE</h3>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
