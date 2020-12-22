@@ -1,14 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
+import UserModal from "./UserModal"
 
 const User = ({ users, setUsers }) => {
-  const deleteUser = () => {
-    setUsers(users.filter((u) => u.uuid !== users.uuid))
+  const deleteUser = (id) => {
+    setUsers(users.filter((user) => user.id !== id))
   }
+
+  const [modalShow, setModalShow] = useState(false)
 
   return (
     <>
       {users.map((user) => (
-        <tr key={user.uuid}>
+        <tr key={user.id}>
           <td>{user.firstname}</td>
           <td>{user.lastname}</td>
           <td>
@@ -17,11 +20,23 @@ const User = ({ users, setUsers }) => {
           <td className='text-center'>
             <i
               className='fas fa-trash pr-3 text-danger'
-              onClick={deleteUser}
+              onClick={() => deleteUser(user.id)}
             ></i>
-            <i className='fas fa-edit text-primary'></i>
+            <i
+              className='fas fa-edit text-primary'
+              onClick={() => setModalShow(true)}
+            ></i>
           </td>
         </tr>
+      ))}
+
+      {users.map((user) => (
+        <UserModal
+          key={user.id}
+          user={user}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       ))}
     </>
   )

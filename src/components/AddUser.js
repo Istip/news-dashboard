@@ -13,7 +13,7 @@ const AddUser = ({ users, setUsers }) => {
     e.preventDefault()
     setUsers([
       ...users,
-      { uuid: uuid(), firstname: firstName, lastname: lastName, email: email },
+      { id: uuid(), firstname: firstName, lastname: lastName, email: email },
     ])
     setFirstName("")
     setLastName("")
