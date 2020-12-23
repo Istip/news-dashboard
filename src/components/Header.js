@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 // IMPORT IMAGES
 import logo from "../assets/minic.png"
 import avatar from "../assets/avatar.png"
@@ -6,7 +7,9 @@ import avatar from "../assets/avatar.png"
 const NavigationBar = ({ login }) => {
   return (
     <div className='d-flex justify-content-between p-3 bg-light border border-bottom'>
-      <img src={logo} width={32} height={32} alt='MINIC' />
+      <Link to='/'>
+        <img src={logo} width={32} height={32} alt='MINIC' />
+      </Link>
       {login ? (
         <>
           <div>

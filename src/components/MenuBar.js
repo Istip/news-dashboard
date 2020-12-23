@@ -13,11 +13,9 @@ const MenuBar = ({ login, setLogin }) => {
       <h3>MENU</h3>
       <ul className='menu__list'>
         <li className='menu__list-item'>
-          {/* <a href='/'>Users</a> */}
-          <Link to='/'>Users</Link>
+          <Link to='/users'>Users</Link>
         </li>
         <li className='menu__list-item'>
-          {/* <a href='/'>Posts</a> */}
           <Link to='/posts'>Posts</Link>
         </li>
         <li className='menu__list-item pt-3'>

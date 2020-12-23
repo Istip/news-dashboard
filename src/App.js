@@ -27,6 +27,11 @@ function App() {
             <Col className='my-auto pt-3'>
               <Switch>
                 <Route path='/' exact>
+                  <div>
+                    <h1 className='display-3'>Welcome!</h1>
+                  </div>
+                </Route>
+                <Route path='/users' exact>
                   <UsersTable />
                 </Route>
                 <Route path='/posts'>

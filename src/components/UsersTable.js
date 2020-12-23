@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Table from "react-bootstrap/Table"
-import AddUser from "./AddUser"
+import UserAdd from "./UserAdd"
 import User from "./User"
 
 // USERS STATE
@@ -48,7 +48,7 @@ const UsersTable = () => {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
-              <th>CRUD</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -62,7 +62,7 @@ const UsersTable = () => {
       )}
 
       <hr />
-      <AddUser users={users} setUsers={setUsers} />
+      <UserAdd users={users} setUsers={setUsers} />
     </>
   )
 }
