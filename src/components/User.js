@@ -8,8 +8,6 @@ const User = ({ users, setUsers }) => {
     setUsers(users.filter((user) => user.id !== id))
   }
 
-  const showUserModal = () => {}
-
   return (
     <>
       {users.map((user, index) => (

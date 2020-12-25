@@ -1,17 +1,15 @@
-import React, { useState } from "react"
+import React from "react"
 
 const PostsTable = () => {
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "First Post",
-      content: "Content of the first post",
-      author: "admin",
-      postedAt: new Date().toLocaleDateString("en-US").split(":"),
-    },
-  ])
-
-  console.log(posts)
+  // const [posts, setPosts] = useState([
+  //   {
+  //     id: 1,
+  //     title: "First Post",
+  //     content: "Content of the first post",
+  //     author: "admin",
+  //     postedAt: new Date().toLocaleDateString("en-US").split(":"),
+  //   },
+  // ])
 
   return (
     <div>
