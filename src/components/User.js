@@ -2,34 +2,39 @@ import React, { useState } from "react"
 import UserModal from "./UserModal"
 
 const User = ({ users, setUsers }) => {
+  const [modalShow, setModalShow] = useState(false)
+
   const deleteUser = (id) => {
     setUsers(users.filter((user) => user.id !== id))
   }
 
-  const [modalShow, setModalShow] = useState(false)
+  const showUserModal = () => {}
 
   return (
     <>
-      {users.map((user) => (
-        <tr key={user.id}>
-          <td>{user.firstname}</td>
-          <td>{user.lastname}</td>
-          <td>
-            <small>{user.email}</small>
-          </td>
-          <td className='text-center'>
-            <i
-              className='fas fa-trash pr-3 text-danger'
-              onClick={() => deleteUser(user.id)}
-            ></i>
-            <i
-              className='fas fa-edit text-primary'
-              onClick={() => setModalShow(true)}
-            ></i>
-          </td>
-        </tr>
+      {users.map((user, index) => (
+        <>
+          <tr key={index} style={{ cursor: "pointer" }}>
+            <td onClick={() => setModalShow(true)}>{user.firstname}</td>
+            <td onClick={() => setModalShow(true)}>{user.lastname}</td>
+            <td onClick={() => setModalShow(true)}>
+              <small>{user.email}</small>
+            </td>
+            <td className='text-center'>
+              <i
+                className='fas fa-trash pr-3 text-danger'
+                onClick={() => deleteUser(user.id)}
+              ></i>
+              {/* <i className='fas fa-edit text-primary'></i> */}
+            </td>
+          </tr>
+          <UserModal
+            user={user}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+        </>
       ))}
-      <UserModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   )
 }

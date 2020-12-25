@@ -3,41 +3,7 @@ import Table from "react-bootstrap/Table"
 import UserAdd from "./UserAdd"
 import User from "./User"
 
-// USERS STATE
-const UsersTable = () => {
-  const [users, setUsers] = useState([
-    {
-      id: "02cd14b3-98ad-3b3d-bd57-95166a95f9cb",
-      firstname: "Admin",
-      lastname: "Doe",
-      email: "admin.doe@gmail.com",
-      role: {
-        id: 1,
-        name: "admin",
-      },
-    },
-    {
-      id: "20951f4a-45b6-3284-bc36-a13747b17cb3",
-      firstname: "Editor",
-      lastname: "Doe",
-      email: "editor.doe@gmail.com",
-      role: {
-        id: 2,
-        name: "editor",
-      },
-    },
-    {
-      id: "c68344cb-0f6f-3fd3-baad-0131f48cf7bb",
-      firstname: "User",
-      lastname: "Doe",
-      email: "user.doe@gmail.com",
-      role: {
-        id: 3,
-        name: "user",
-      },
-    },
-  ])
-
+const UsersTable = ({ users, setUsers }) => {
   return (
     <>
       <h1 className='pb-3'>Users</h1>
