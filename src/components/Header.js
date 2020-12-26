@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-// IMPORT IMAGES
+// IMPORTING IMAGES
 import logo from "../assets/minic.png"
 import avatar from "../assets/avatar.png"
 
