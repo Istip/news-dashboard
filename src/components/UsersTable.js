@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import Table from "react-bootstrap/Table"
 import UserAdd from "./UserAdd"
 import User from "./User"
@@ -8,6 +8,7 @@ const UsersTable = ({ users, setUsers }) => {
   const deleteUser = (id) => {
     setUsers(users.filter((user) => user.id !== id))
   }
+
   return (
     <>
       <h1 className='pb-3'>Users</h1>
