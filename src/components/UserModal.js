@@ -1,16 +1,26 @@
-import React from "react"
+import React, { useState } from "react"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 
 function UserModal(props) {
+  const [userFirstName, setUserFirstName] = useState(props.user.firstname)
+  const [userLastName, setUserLastName] = useState(props.user.lastname)
+  const [userEmail, setUserEmail] = useState(props.user.email)
+
+  const handleSubmit = () => {
+    props.user.firstname = userFirstName
+    props.user.lastname = userLastName
+    props.user.email = userEmail
+  }
+
   return (
     <Modal {...props} size='lg' aria-labelledby='edit-modal-centered' centered>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
           <Modal.Title id='edit-modal-centered'>
             <h3>
-              {props.user.firstname} {props.user.lastname}
+              {userFirstName} {userLastName}
             </h3>
           </Modal.Title>
         </Modal.Header>
@@ -26,8 +36,9 @@ function UserModal(props) {
           <Form.Group>
             <Form.Label>First Name:</Form.Label>
             <Form.Control
+              onChange={(e) => setUserFirstName(e.target.value)}
               required
-              value={props.user.firstname}
+              value={userFirstName}
               name='firstname'
               type='text'
             />
@@ -36,8 +47,9 @@ function UserModal(props) {
           <Form.Group>
             <Form.Label>Last Name:</Form.Label>
             <Form.Control
+              onChange={(e) => setUserLastName(e.target.value)}
               required
-              value={props.user.lastname}
+              value={userLastName}
               name='lastname'
               type='text'
             />
@@ -46,8 +58,9 @@ function UserModal(props) {
           <Form.Group>
             <Form.Label>Email:</Form.Label>
             <Form.Control
+              onChange={(e) => setUserEmail(e.target.value)}
               required
-              value={props.user.email}
+              value={userEmail}
               name='email'
               type='email'
             />

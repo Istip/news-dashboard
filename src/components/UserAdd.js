@@ -57,8 +57,8 @@ const AddUser = ({ users, setUsers }) => {
           />
         </Form.Group>
 
-        <Button variant='secondary' type='submit'>
-          <i className='fas fa-plus-circle'></i> Add
+        <Button type='submit'>
+          <i className='fas fa-plus-circle pr-2'></i> Add User
         </Button>
       </Form>
     </Container>

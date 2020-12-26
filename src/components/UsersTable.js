@@ -11,7 +11,11 @@ const UsersTable = ({ users, setUsers }) => {
 
   return (
     <>
-      <h1 className='pb-3'>Users</h1>
+      <h1 className='pb-0'>Users</h1>
+      <small>
+        <p className='text-muted pt-0 pb-0'>Click user to open modal!</p>
+      </small>
+      <UserAdd users={users} setUsers={setUsers} />
       {users.length ? (
         <Table striped bordered hover size='sm'>
           <thead>
@@ -28,7 +32,7 @@ const UsersTable = ({ users, setUsers }) => {
                 <User key={user.id} user={user} setUsers={setUsers} />
                 <td>
                   <i
-                    className='fas fa-trash'
+                    className='fas fa-eraser text-danger'
                     onClick={() => deleteUser(user.id)}
                   ></i>
                 </td>
@@ -41,9 +45,6 @@ const UsersTable = ({ users, setUsers }) => {
           <h3 className='text-danger'>No users to show!</h3>
         </div>
       )}
-
-      <hr />
-      <UserAdd users={users} setUsers={setUsers} />
     </>
   )
 }
