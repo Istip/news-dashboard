@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
 import uuid from "react-uuid"
 
-const AddUser = ({ users, setUsers }) => {
+const AddUser = ({ users, setUsers, toastUserAdded }) => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
@@ -18,6 +18,7 @@ const AddUser = ({ users, setUsers }) => {
     setFirstName("")
     setLastName("")
     setEmail("")
+    toastUserAdded()
   }
 
   return (

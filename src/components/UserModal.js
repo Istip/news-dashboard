@@ -67,7 +67,9 @@ function UserModal(props) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Save</Button>
+          <Button onClick={props.onHide} onMouseUp={props.toastUserEdited}>
+            Save
+          </Button>
         </Modal.Footer>
       </Form>
     </Modal>

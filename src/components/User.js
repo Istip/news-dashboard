@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import UserModal from "./UserModal"
 
-const User = ({ user }) => {
+const User = ({ user, toastUserEdited }) => {
   const [modalShow, setModalShow] = useState(false)
 
   return (
@@ -16,6 +16,7 @@ const User = ({ user }) => {
       <UserModal
         user={user}
         show={modalShow}
+        toastUserEdited={toastUserEdited}
         onHide={() => setModalShow(false)}
       />
     </>

@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 import uuid from "react-uuid"
 import { Link } from "react-router-dom"
+// TOASTIFY FOR REACT
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 // BOOTSTRAP COMPS
 import Table from "react-bootstrap/Table"
 import Form from "react-bootstrap/Form"
@@ -28,18 +31,31 @@ const PostsTable = ({ users, posts, setPosts }) => {
     ])
     setTitle("")
     setContent("")
+    toast.success("Post has been created!")
   }
 
   const deletePost = (id) => {
     setPosts(posts.filter((post) => post.id !== id))
+    toast.error("Post removed!")
   }
 
   return (
     <div>
+      <ToastContainer
+        position='bottom-right'
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <h1 className='pb-0'>Posts Page</h1>
       <small>
         <p className='text-muted pt-0 pb-5'>
-          Click the eye icon for to preview your post!
+          Click the <i className='fas fa-eye'></i> to preview your post!
         </p>
       </small>
       <h3 className='pb-3'>Add new Post</h3>
@@ -143,10 +159,12 @@ const PostsTable = ({ users, posts, setPosts }) => {
                       {post.postedAtDate} <br /> {post.postedAtTime}
                     </td>
                     <td>
-                      <i
-                        className='fas fa-eraser text-danger pr-2'
-                        onClick={() => deletePost(post.id)}
-                      ></i>
+                      <Link>
+                        <i
+                          className='fas fa-trash text-danger pr-2'
+                          onClick={() => deletePost(post.id)}
+                        ></i>
+                      </Link>
                       <Link to={`/posts/${post.title}`}>
                         <i className='fas fa-eye'></i>
                       </Link>
