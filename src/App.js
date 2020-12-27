@@ -1,16 +1,16 @@
 import React, { useState } from "react"
 import "./App.css"
-import Header from "./components/Header"
-import MenuBar from "./components/MenuBar"
-
-import UsersTable from "./components/UsersTable"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import PostsTable from "./components/PostsTable"
-
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+// PROJECT COMPONENTS
+import Header from "./components/Header"
+import MenuBar from "./components/MenuBar"
+import UsersTable from "./components/UsersTable"
+import PostsTable from "./components/PostsTable"
+import PostPreview from "./components/PostPreview"
 
 function App() {
   // USERS STATE
@@ -91,8 +91,11 @@ function App() {
                 <Route path='/users' exact>
                   <UsersTable users={users} setUsers={setUsers} />
                 </Route>
-                <Route path='/posts'>
+                <Route path='/posts' exact>
                   <PostsTable users={users} posts={posts} setPosts={setPosts} />
+                </Route>
+                <Route path='/posts/:title' exact>
+                  <PostPreview posts={posts} />
                 </Route>
               </Switch>
             </Col>

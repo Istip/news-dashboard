@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import uuid from "react-uuid"
+import { Link } from "react-router-dom"
 // BOOTSTRAP COMPS
 import Table from "react-bootstrap/Table"
 import Form from "react-bootstrap/Form"
@@ -37,9 +38,11 @@ const PostsTable = ({ users, posts, setPosts }) => {
     <div>
       <h1 className='pb-0'>Posts Page</h1>
       <small>
-        <p className='text-muted pt-0 pb-5'>Click article for a preview!</p>
+        <p className='text-muted pt-0 pb-5'>
+          Click the eye icon for to preview your post!
+        </p>
       </small>
-      <h3 className='pb-3'>Add new Article</h3>
+      <h3 className='pb-3'>Add new Post</h3>
       <Container style={{ maxWidth: "800px" }} className='pb-5'>
         <Form onSubmit={submitHandler}>
           <Form.Group>
@@ -93,12 +96,12 @@ const PostsTable = ({ users, posts, setPosts }) => {
               onChange={(e) => setContent(e.target.value)}
               value={content}
               as='textarea'
-              rows={3}
+              rows={5}
               required
             />
           </Form.Group>
           <Button type='submit'>
-            <i className='fas fa-paper-plane pr-2'></i> Post Article
+            <i className='fas fa-paper-plane pr-2'></i> Post
           </Button>
         </Form>
       </Container>
@@ -141,9 +144,12 @@ const PostsTable = ({ users, posts, setPosts }) => {
                     </td>
                     <td>
                       <i
-                        className='fas fa-eraser text-danger'
+                        className='fas fa-eraser text-danger pr-2'
                         onClick={() => deletePost(post.id)}
                       ></i>
+                      <Link to={`/posts/${post.title}`}>
+                        <i className='fas fa-eye'></i>
+                      </Link>
                     </td>
                   </tr>
                 ))}
