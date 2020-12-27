@@ -122,7 +122,7 @@ const PostsTable = ({ users, posts, setPosts }) => {
         </Form>
       </Container>
 
-      <Container>
+      <Container className='pb-5'>
         {posts.length ? (
           <>
             <hr />
@@ -152,14 +152,27 @@ const PostsTable = ({ users, posts, setPosts }) => {
                   <tr key={post.id}>
                     <td>{post.title}</td>
                     <td style={{ maxWidth: "500px" }} className='px-3'>
-                      <small>{post.content}</small>
+                      <Form.Control
+                        size='sm'
+                        value={post.content}
+                        as='textarea'
+                        rows={4}
+                        required
+                      />
                     </td>
-                    <td>{post.author}</td>
                     <td>
-                      {post.postedAtDate} <br /> {post.postedAtTime}
+                      <b className='bg-success text-light px-2 py-1'>
+                        {post.author}
+                      </b>
                     </td>
                     <td>
-                      <Link>
+                      <small>
+                        {post.postedAtDate} <br />
+                        <b>{post.postedAtTime}</b>
+                      </small>
+                    </td>
+                    <td>
+                      <Link to='/posts'>
                         <i
                           className='fas fa-trash text-danger pr-2'
                           onClick={() => deletePost(post.id)}

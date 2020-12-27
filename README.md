@@ -1,3 +1,3 @@
 # News dashboard
 
-Created using: **React** + **React-Bootstrap** + **React Router Dom** ...(adding more soon)
+Project created using: **React** + **HTML** + **CSS** + **React-Bootstrap** + **React-router-dom** + **React-Toastify**.
