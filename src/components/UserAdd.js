@@ -8,7 +8,7 @@ const AddUser = ({ users, setUsers, toastUserAdded }) => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
-  const [role, setRole] = useState("")
+  const [role, setRole] = useState("user")
 
   const submitHandler = (e) => {
     e.preventDefault()

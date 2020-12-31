@@ -76,7 +76,7 @@ function App() {
         <Header login={login} setLogin={setLogin} />
         <Container fluid>
           <Row>
-            <Col sm={4} md={4} lg={2}>
+            <Col md={2}>
               <MenuBar login={login} setLogin={setLogin} />
             </Col>
             <Col className='my-auto pt-3'>

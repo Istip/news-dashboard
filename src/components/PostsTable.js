@@ -11,7 +11,7 @@ import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
-import { FormControl } from "react-bootstrap"
+import FormControl from "react-bootstrap/FormControl"
 
 const PostsTable = ({ users, posts, setPosts }) => {
   const [title, setTitle] = useState("")
