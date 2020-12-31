@@ -5,6 +5,10 @@
   letter-spacing: -1px;
 }
 
+.App {
+  text-align: center;
+}
+
 body {
   margin: 0;
 }

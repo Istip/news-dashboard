@@ -196,7 +196,7 @@ const PostsTable = ({ users, posts, setPosts }) => {
                     <td>
                       <small>
                         {post.postedAtDate} <br />
-                        <b>{post.postedAtTime}</b>
+                        {post.postedAtTime}
                       </small>
                     </td>
                     <td>
