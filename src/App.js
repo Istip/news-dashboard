@@ -10,6 +10,7 @@ import MenuBar from "./components/MenuBar"
 import UsersTable from "./components/UsersTable"
 import PostsTable from "./components/PostsTable"
 import PostPreview from "./components/PostPreview"
+import Login from "./components/Login"
 
 function App() {
   // USERS STATE
@@ -69,11 +70,12 @@ function App() {
   ])
 
   const [login, setLogin] = useState(true)
+  // const [globalUser, setGlobalUser] = useState("admin")
 
   return (
     <div className='App'>
       <Router>
-        <Header login={login} setLogin={setLogin} />
+        <Header login={login} setLogin={setLogin} users={users} />
         <Container fluid>
           <Row>
             <Col md={2}>
@@ -82,19 +84,40 @@ function App() {
             <Col className='my-auto pt-3'>
               <Switch>
                 <Route path='/' exact>
-                  <div>
+                  <div className='pt-5'>
                     <h1 className='display-3'>WELCOME</h1>
                     <h4 className='text-muted'>to the news dashboard</h4>
+                    {!login && (
+                      <p className='pt-3 text-primary'>
+                        Please log in to use the app!
+                      </p>
+                    )}
                   </div>
                 </Route>
                 <Route path='/users' exact>
-                  <UsersTable users={users} setUsers={setUsers} />
+                  {login ? (
+                    <UsersTable users={users} setUsers={setUsers} />
+                  ) : (
+                    <Login page='Users' />
+                  )}
                 </Route>
                 <Route path='/posts' exact>
-                  <PostsTable users={users} posts={posts} setPosts={setPosts} />
+                  {login ? (
+                    <PostsTable
+                      users={users}
+                      posts={posts}
+                      setPosts={setPosts}
+                    />
+                  ) : (
+                    <Login page='Posts' />
+                  )}
                 </Route>
                 <Route path='/posts/:title' exact>
-                  <PostPreview posts={posts} />
+                  {login ? (
+                    <PostPreview posts={posts} />
+                  ) : (
+                    <Login page='Post Preview' />
+                  )}
                 </Route>
               </Switch>
             </Col>

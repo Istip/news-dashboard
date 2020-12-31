@@ -60,7 +60,7 @@ const PostsTable = ({ users, posts, setPosts }) => {
         draggable
         pauseOnHover
       />
-      <h1 className='pb-0'>Posts Page</h1>
+      <h1 className='pb-0'>Posts</h1>
       <small>
         <p className='text-muted pt-0 pb-5'>
           Click the <i className='fas fa-eye'></i> to preview your post!
