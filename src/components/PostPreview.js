@@ -11,7 +11,7 @@ const PostPreview = ({ posts }) => {
       {posts
         .filter((post) => post.title === title)
         .map((post, index) => (
-          <Container key={index}>
+          <Container key={index} className='mb-5'>
             <Card className='boxshadow p-5'>
               <Row>
                 <Col lg={4}>

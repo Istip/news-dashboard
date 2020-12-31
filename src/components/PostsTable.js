@@ -10,6 +10,8 @@ import Form from "react-bootstrap/Form"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
+import InputGroup from "react-bootstrap/InputGroup"
+import { FormControl } from "react-bootstrap"
 
 const PostsTable = ({ users, posts, setPosts }) => {
   const [title, setTitle] = useState("")
@@ -37,6 +39,12 @@ const PostsTable = ({ users, posts, setPosts }) => {
   const deletePost = (id) => {
     setPosts(posts.filter((post) => post.id !== id))
     toast.error("Post removed!")
+  }
+
+  const handleChangeInput = (index, event) => {
+    const values = [...posts]
+    values[index][event.target.name] = event.target.value
+    setPosts(values)
   }
 
   return (
@@ -148,16 +156,36 @@ const PostsTable = ({ users, posts, setPosts }) => {
                 </tr>
               </thead>
               <tbody>
-                {posts.map((post) => (
-                  <tr key={post.id}>
-                    <td>{post.title}</td>
-                    <td style={{ maxWidth: "500px" }} className='px-3'>
+                {posts.map((post, index) => (
+                  <tr key={index}>
+                    <td style={{ maxWidth: "200px" }}>
+                      <h5 className='pt-2'>
+                        <b>{post.title}</b>
+                      </h5>{" "}
+                      <br />
+                      <InputGroup className='px-5'>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>
+                            <i className='fas fa-edit'></i>
+                          </InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          name='title'
+                          value={post.title}
+                          type='text'
+                          onChange={(event) => handleChangeInput(index, event)}
+                        />
+                      </InputGroup>
+                    </td>
+                    <td style={{ maxWidth: "500px" }} className='p-3'>
                       <Form.Control
+                        name='content'
                         size='sm'
                         value={post.content}
                         as='textarea'
                         rows={4}
                         required
+                        onChange={(event) => handleChangeInput(index, event)}
                       />
                     </td>
                     <td>
