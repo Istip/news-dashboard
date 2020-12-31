@@ -8,12 +8,19 @@ const AddUser = ({ users, setUsers, toastUserAdded }) => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
+  const [role, setRole] = useState("")
 
   const submitHandler = (e) => {
     e.preventDefault()
     setUsers([
       ...users,
-      { id: uuid(), firstname: firstName, lastname: lastName, email: email },
+      {
+        id: uuid(),
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        role: { id: users.length + 1, name: role },
+      },
     ])
     setFirstName("")
     setLastName("")
@@ -56,6 +63,22 @@ const AddUser = ({ users, setUsers, toastUserAdded }) => {
             placeholder='Enter Email Adress'
             onChange={(e) => setEmail(e.target.value)}
           />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Select new user's role:</Form.Label>
+          <Form.Control
+            as='select'
+            required
+            value={role}
+            name='role'
+            placeholder='Enter Email Adress'
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option>user</option>
+            <option>editor</option>
+            <option>admin</option>
+          </Form.Control>
         </Form.Group>
 
         <Button type='submit'>

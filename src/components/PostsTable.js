@@ -163,7 +163,7 @@ const PostsTable = ({ users, posts, setPosts }) => {
                         <b>{post.title}</b>
                       </h5>{" "}
                       <br />
-                      <InputGroup className='px-5'>
+                      <InputGroup size='sm' className='px-5'>
                         <InputGroup.Prepend>
                           <InputGroup.Text>
                             <i className='fas fa-edit'></i>
@@ -188,8 +188,8 @@ const PostsTable = ({ users, posts, setPosts }) => {
                         onChange={(event) => handleChangeInput(index, event)}
                       />
                     </td>
-                    <td>
-                      <b className='bg-success text-light px-2 py-1'>
+                    <td className='pt-3'>
+                      <b className='bg-success text-light px-3 py-1'>
                         {post.author}
                       </b>
                     </td>

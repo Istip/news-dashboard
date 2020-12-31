@@ -14,7 +14,7 @@ const NavigationBar = ({ login }) => {
         <>
           <div>
             <a href='/' className='pr-3'>
-              John Doe
+              Admin Doe
             </a>
             <img src={avatar} width={32} height={32} alt='AVATAR' />
           </div>

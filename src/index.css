@@ -1,14 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Roboto+Condensed:wght@300;400;700&display=swap");
 
 * {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -1px;
 }
 
 body {
   margin: 0;
 }
-
-/* i:hover {
-  cursor: pointer;
-} */

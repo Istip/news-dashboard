@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import Table from "react-bootstrap/Table"
 import UserAdd from "./UserAdd"
 import User from "./User"
+import UserModal from "./UserModal"
 // TOASTIFY FOR REACT
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
 const UsersTable = ({ users, setUsers }) => {
+  const [modalShow, setModalShow] = useState(false)
   // DELETE USER FUNCTION
   const deleteUser = (id) => {
     setUsers(users.filter((user) => user.id !== id))
@@ -14,7 +16,12 @@ const UsersTable = ({ users, setUsers }) => {
   }
 
   const toastUserAdded = () => toast.success("New user added!")
-  const toastUserEdited = () => toast.success("Saved!")
+
+  const handleChangeInput = (index, event) => {
+    const values = [...users]
+    values[index][event.target.name] = event.target.value
+    setUsers(values)
+  }
 
   return (
     <>
@@ -31,7 +38,9 @@ const UsersTable = ({ users, setUsers }) => {
       />
       <h1 className='pb-0'>Users</h1>
       <small>
-        <p className='text-muted pt-0 pb-0'>Click user to open modal!</p>
+        <p className='text-muted pt-0 pb-5'>
+          Click the <i className='fas fa-eye'></i> to open user's modal!
+        </p>
       </small>
       <UserAdd
         users={users}
@@ -49,20 +58,21 @@ const UsersTable = ({ users, setUsers }) => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id} style={{ cursor: "pointer" }}>
+            {users.map((user, index) => (
+              <tr key={index}>
                 <User
-                  key={user.id}
+                  handleChangeInput={handleChangeInput}
+                  key={index}
+                  index={index}
                   user={user}
                   setUsers={setUsers}
-                  toastUserEdited={toastUserEdited}
+                  deleteUser={deleteUser}
                 />
-                <td>
-                  <i
-                    className='fas fa-trash text-danger'
-                    onClick={() => deleteUser(user.id)}
-                  ></i>
-                </td>
+                <UserModal
+                  user={user}
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
               </tr>
             ))}
           </tbody>
