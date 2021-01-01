@@ -15,9 +15,6 @@ const NavigationBar = ({ login, users }) => {
       {login ? (
         <>
           <Row>
-            {/* <a href='/' className='pr-3'>
-              Admin Doe
-            </a> */}
             <Col className='p-0 pr-2 m-0'>
               <Form.Control as='select' style={{ minWidth: "150px" }}>
                 {users.map((user) => (
@@ -33,8 +30,8 @@ const NavigationBar = ({ login, users }) => {
           </Row>
         </>
       ) : (
-        <a href='/' className='btn btn-sm btn-outline-danger'>
-          Log in
+        <a href='/' className='btn btn-outline-danger'>
+          LOG IN
         </a>
       )}
     </div>

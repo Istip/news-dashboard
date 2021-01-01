@@ -61,11 +61,17 @@ const PostsTable = ({ users, posts, setPosts }) => {
         pauseOnHover
       />
       <h1 className='pb-0'>Posts</h1>
-      <small>
-        <p className='text-muted pt-0 pb-5'>
-          Click the <i className='fas fa-eye'></i> to preview your post!
-        </p>
-      </small>
+      {posts.length ? (
+        <small>
+          <p className='text-muted pt-0 pb-5'>
+            Click the <i className='fas fa-eye'></i> to preview your post!
+          </p>
+        </small>
+      ) : (
+        <small>
+          <p className='text-muted pt-0 pb-5'>Add posts' to check them out!</p>
+        </small>
+      )}
       <h3 className='pb-3'>Add new Post</h3>
       <Container style={{ maxWidth: "800px" }} className='pb-5'>
         <Form onSubmit={submitHandler}>

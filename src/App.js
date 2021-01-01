@@ -89,7 +89,7 @@ function App() {
                     <h4 className='text-muted'>to the news dashboard</h4>
                     {!login && (
                       <p className='pt-3 text-primary'>
-                        Please log in to use the app!
+                        <b>Please log in to use the app!</b>
                       </p>
                     )}
                   </div>
