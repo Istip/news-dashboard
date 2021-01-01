@@ -37,11 +37,17 @@ const UsersTable = ({ users, setUsers }) => {
         pauseOnHover
       />
       <h1 className='pb-0'>Users</h1>
-      <small>
-        <p className='text-muted pt-0 pb-5'>
-          Click the <i className='fas fa-eye'></i> to open user's modal!
-        </p>
-      </small>
+      {users.length ? (
+        <small>
+          <p className='text-muted pt-0 pb-5'>
+            Click the <i className='fas fa-eye'></i> to open user's modal!
+          </p>
+        </small>
+      ) : (
+        <small>
+          <p className='text-muted pt-0 pb-5'>Add some users please!</p>
+        </small>
+      )}
       <UserAdd
         users={users}
         setUsers={setUsers}
