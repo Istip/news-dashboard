@@ -70,12 +70,17 @@ function App() {
   ])
 
   const [login, setLogin] = useState(true)
-  // const [globalUser, setGlobalUser] = useState("admin")
+  const [globalUser, setGlobalUser] = useState("admin")
 
   return (
     <div className='App'>
       <Router>
-        <Header login={login} setLogin={setLogin} users={users} />
+        <Header
+          login={login}
+          users={users}
+          globalUser={globalUser}
+          setGlobalUser={setGlobalUser}
+        />
         <Container fluid>
           <Row>
             <Col md={2}>
@@ -96,7 +101,11 @@ function App() {
                 </Route>
                 <Route path='/users' exact>
                   {login ? (
-                    <UsersTable users={users} setUsers={setUsers} />
+                    <UsersTable
+                      users={users}
+                      setUsers={setUsers}
+                      globalUser={globalUser}
+                    />
                   ) : (
                     <Login page='Users' />
                   )}
@@ -104,6 +113,7 @@ function App() {
                 <Route path='/posts' exact>
                   {login ? (
                     <PostsTable
+                      globalUser={globalUser}
                       users={users}
                       posts={posts}
                       setPosts={setPosts}

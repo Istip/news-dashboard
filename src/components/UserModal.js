@@ -42,7 +42,7 @@ function UserModal(props) {
         </Row>
         <hr className='mx-5' />
         <Row>
-          <Col className='text-right'>User role:</Col>
+          <Col className='text-right'>User's role:</Col>
           <Col className='text-left'>
             <b>
               {props.user.role.name === "admin" ? (

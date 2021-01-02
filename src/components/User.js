@@ -8,6 +8,7 @@ const User = ({
   toastUserEdited,
   handleChangeInput,
   deleteUser,
+  globalUser,
 }) => {
   const [modalShow, setModalShow] = useState(false)
 
@@ -22,6 +23,7 @@ const User = ({
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
+            disabled={globalUser === "user" ? true : false}
             name='firstname'
             value={user.firstname}
             type='text'
@@ -38,6 +40,7 @@ const User = ({
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
+            disabled={globalUser === "user" ? true : false}
             name='lastname'
             value={user.lastname}
             type='text'
@@ -56,6 +59,7 @@ const User = ({
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
+            disabled={globalUser !== "admin" ? true : false}
             name='email'
             value={user.email}
             type='text'
@@ -64,11 +68,13 @@ const User = ({
         </InputGroup>
       </td>
       <td>
-        <i
-          style={{ cursor: "pointer" }}
-          className='fas fa-trash text-danger pr-2'
-          onClick={() => deleteUser(user.id)}
-        ></i>
+        {globalUser !== "user" && (
+          <i
+            style={{ cursor: "pointer" }}
+            className='fas fa-trash text-danger pr-2'
+            onClick={() => deleteUser(user.id)}
+          ></i>
+        )}
         <i
           style={{ cursor: "pointer" }}
           className='fas fa-eye text-primary'

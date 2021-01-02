@@ -7,7 +7,7 @@ import UserModal from "./UserModal"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-const UsersTable = ({ users, setUsers }) => {
+const UsersTable = ({ users, setUsers, globalUser }) => {
   const [modalShow, setModalShow] = useState(false)
   // DELETE USER FUNCTION
   const deleteUser = (id) => {
@@ -15,8 +15,10 @@ const UsersTable = ({ users, setUsers }) => {
     toast.error("User has been removed!")
   }
 
+  // TOAST GENERATOR
   const toastUserAdded = () => toast.success("New user added!")
 
+  // EDIT FUNCTION
   const handleChangeInput = (index, event) => {
     const values = [...users]
     values[index][event.target.name] = event.target.value
@@ -41,6 +43,9 @@ const UsersTable = ({ users, setUsers }) => {
         <small>
           <p className='text-muted pt-0 pb-5'>
             Click the <i className='fas fa-eye'></i> to open user's modal!
+            <br />
+            Only users with <b>admin</b> or <b>editor</b> role can edit or
+            delete!
           </p>
         </small>
       ) : (
@@ -67,6 +72,7 @@ const UsersTable = ({ users, setUsers }) => {
             {users.map((user, index) => (
               <tr key={index}>
                 <User
+                  globalUser={globalUser}
                   handleChangeInput={handleChangeInput}
                   key={index}
                   index={index}

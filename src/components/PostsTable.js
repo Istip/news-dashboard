@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
 
-const PostsTable = ({ users, posts, setPosts }) => {
+const PostsTable = ({ users, posts, setPosts, globalUser }) => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [author, setAuthor] = useState("Admin")
@@ -65,11 +65,14 @@ const PostsTable = ({ users, posts, setPosts }) => {
         <small>
           <p className='text-muted pt-0 pb-5'>
             Click the <i className='fas fa-eye'></i> to preview your post!
+            <br />
+            Only users with <b>admin</b> or <b>editor</b> role can edit or
+            delete!
           </p>
         </small>
       ) : (
         <small>
-          <p className='text-muted pt-0 pb-5'>Add posts' to check them out!</p>
+          <p className='text-muted pt-0 pb-5'>Add a post!</p>
         </small>
       )}
       <h3 className='pb-3'>Add new Post</h3>
@@ -176,6 +179,7 @@ const PostsTable = ({ users, posts, setPosts }) => {
                           </InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
+                          disabled={globalUser === "user" ? true : false}
                           name='title'
                           value={post.title}
                           type='text'
@@ -185,6 +189,7 @@ const PostsTable = ({ users, posts, setPosts }) => {
                     </td>
                     <td style={{ maxWidth: "500px" }} className='p-3'>
                       <Form.Control
+                        disabled={globalUser === "user" ? true : false}
                         name='content'
                         size='sm'
                         value={post.content}
@@ -206,12 +211,14 @@ const PostsTable = ({ users, posts, setPosts }) => {
                       </small>
                     </td>
                     <td>
-                      <Link to='/posts'>
-                        <i
-                          className='fas fa-trash text-danger pr-2'
-                          onClick={() => deletePost(post.id)}
-                        ></i>
-                      </Link>
+                      {globalUser !== "user" && (
+                        <Link to='/posts'>
+                          <i
+                            className='fas fa-trash text-danger pr-2'
+                            onClick={() => deletePost(post.id)}
+                          ></i>
+                        </Link>
+                      )}
                       <Link to={`/posts/${post.title}`}>
                         <i className='fas fa-eye'></i>
                       </Link>
