@@ -59,7 +59,7 @@ const User = ({
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            disabled={globalUser !== "admin" ? true : false}
+            disabled={globalUser === "user" ? true : false}
             name='email'
             value={user.email}
             type='text'
