@@ -1,12 +1,17 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import Form from "react-bootstrap/Form"
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Form } from "react-bootstrap"
 // IMPORTING IMAGES
 import logo from "../assets/minic.png"
 import avatar from "../assets/avatar.png"
 
-const NavigationBar = ({ login, users, globalUser, setGlobalUser }) => {
+const NavigationBar = ({
+  login,
+  setLogin,
+  users,
+  globalUser,
+  setGlobalUser,
+}) => {
   return (
     <div className='d-flex justify-content-between p-3 bg-light border border-bottom'>
       <Link to='/'>
@@ -40,9 +45,12 @@ const NavigationBar = ({ login, users, globalUser, setGlobalUser }) => {
           </Row>
         </>
       ) : (
-        <a href='/' className='btn btn-outline-danger'>
+        <button
+          className='btn btn-outline-danger'
+          onClick={() => setLogin(!login)}
+        >
           LOG IN
-        </a>
+        </button>
       )}
     </div>
   )

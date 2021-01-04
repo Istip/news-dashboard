@@ -5,13 +5,15 @@ import { Link } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 // BOOTSTRAP COMPS
-import Table from "react-bootstrap/Table"
-import Form from "react-bootstrap/Form"
-import Col from "react-bootstrap/Col"
-import Container from "react-bootstrap/Container"
-import Button from "react-bootstrap/Button"
-import InputGroup from "react-bootstrap/InputGroup"
-import FormControl from "react-bootstrap/FormControl"
+import {
+  Table,
+  Form,
+  Col,
+  Container,
+  Button,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap"
 
 const PostsTable = ({ users, posts, setPosts, globalUser }) => {
   const [title, setTitle] = useState("")

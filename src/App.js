@@ -1,9 +1,7 @@
 import React, { useState } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 // BOOTSTRAP COMPONENTS
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
+import { Container, Row, Col } from "react-bootstrap"
 // PROJECT COMPONENTS
 import Header from "./components/Header"
 import MenuBar from "./components/MenuBar"
@@ -49,27 +47,27 @@ function App() {
 
   // POSTS STATE
   const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "First Post",
-      content:
-        "Colestiae nesciunt atque? Ad reiciendis, aperiam eveniet error beatae tempore, rem aspernatur autem velit eaque officiis minima voluptatibus odio, omnis harum quibusdam dolorum.",
-      author: "Admin",
-      postedAtDate: new Date().toLocaleDateString("hu-HU"),
-      postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-    },
-    {
-      id: 2,
-      title: "Second Post",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sunt aliquam corrupti facere excepturi, nisi ad ut earum quisquam debitis corporis libero dolores, soluta modi quos pariatur.",
-      author: "Admin",
-      postedAtDate: new Date().toLocaleDateString("hu-HU"),
-      postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-    },
+    // {
+    //   id: 1,
+    //   title: "First Post",
+    //   content:
+    //     "Colestiae nesciunt atque? Ad reiciendis, aperiam eveniet error beatae tempore, rem aspernatur autem velit eaque officiis minima voluptatibus odio, omnis harum quibusdam dolorum.",
+    //   author: "Admin",
+    //   postedAtDate: new Date().toLocaleDateString("hu-HU"),
+    //   postedAtTime: new Date().toLocaleTimeString("hu-HU"),
+    // },
+    // {
+    //   id: 2,
+    //   title: "Second Post",
+    //   content:
+    //     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sunt aliquam corrupti facere excepturi, nisi ad ut earum quisquam debitis corporis libero dolores, soluta modi quos pariatur.",
+    //   author: "Admin",
+    //   postedAtDate: new Date().toLocaleDateString("hu-HU"),
+    //   postedAtTime: new Date().toLocaleTimeString("hu-HU"),
+    // },
   ])
 
-  const [login, setLogin] = useState(true)
+  const [login, setLogin] = useState(false)
   const [globalUser, setGlobalUser] = useState("admin")
 
   return (
@@ -77,6 +75,7 @@ function App() {
       <Router>
         <Header
           login={login}
+          setLogin={setLogin}
           users={users}
           globalUser={globalUser}
           setGlobalUser={setGlobalUser}
