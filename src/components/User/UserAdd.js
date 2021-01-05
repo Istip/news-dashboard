@@ -9,6 +9,9 @@ const AddUser = ({ users, setUsers }) => {
   const [email, setEmail] = useState("")
   const [role, setRole] = useState("user")
 
+  // THE HANDLER FUNCTION FOR THE FORM
+  // THE FUNCTION TAKES 'E' AS THE EVENT AND PREVENTS REFRESHING THE PAGE
+  //  THEN CREATES A NEW USER BASED ON THE POPULATED INPUT FIELDS AND ADDS THE NEW OBJECT TO THE EXISTING USERS. FINALLY RESETTING THE STATE VALUES TO AN EMPTY STRING, WE GET EMPTY INPUT FIELDS AFTER THE SUBMITTING
   const submitHandler = (e) => {
     e.preventDefault()
     setUsers([
@@ -32,6 +35,7 @@ const AddUser = ({ users, setUsers }) => {
       <h3 className='pb-3'>Add new User</h3>
       <Form onSubmit={submitHandler}>
         <Form.Group>
+          {/* THIS IS THE INPUT FOR THE FIRST NAME */}
           <Form.Control
             required
             value={firstName}
@@ -43,6 +47,7 @@ const AddUser = ({ users, setUsers }) => {
         </Form.Group>
 
         <Form.Group>
+          {/* THIS IS THE INPUT FOR THE LAST NAME */}
           <Form.Control
             required
             value={lastName}
@@ -54,6 +59,7 @@ const AddUser = ({ users, setUsers }) => {
         </Form.Group>
 
         <Form.Group>
+          {/* THIS IS THE INPUT FOR USER'S EMAIL ADRESS */}
           <Form.Control
             required
             value={email}
@@ -65,6 +71,7 @@ const AddUser = ({ users, setUsers }) => {
         </Form.Group>
 
         <Form.Group>
+          {/* A DROPDOWN MENU TO SELECT THE USER'S ROLE */}
           <Form.Label>Select new user's role:</Form.Label>
           <Form.Control
             as='select'
@@ -80,6 +87,7 @@ const AddUser = ({ users, setUsers }) => {
           </Form.Control>
         </Form.Group>
 
+        {/* JUST A FANCY SUBMIT BUTTON TO FINISH THE FORM */}
         <Button type='submit'>
           <i className='fas fa-plus-circle pr-2'></i> Add User
         </Button>

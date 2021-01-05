@@ -3,7 +3,8 @@ import "../../assets/styling/MenuBar.css"
 import { Link } from "react-router-dom"
 
 const MenuBar = ({ login, setLogin }) => {
-  // FUNCTION TO HANDLE THE LOGGED STATE
+  // FUNCTION TO HANDLE THE LOGIN STATE
+  // IF YOU ARE LOGGED OUT, IT LOGS YOU IN AND VICE VERSA
   const loginHandler = (e) => {
     e.preventDefault()
     setLogin(!login)

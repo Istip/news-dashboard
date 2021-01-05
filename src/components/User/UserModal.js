@@ -2,6 +2,7 @@ import React from "react"
 import { Button, Modal, Row, Col } from "react-bootstrap"
 
 function UserModal(props) {
+  // THIS COMPONENT RENDERS EVERY INDIVIDUAL USER'S INFO TO PREVIEW
   return (
     <Modal {...props} size='lg' aria-labelledby='edit-modal-centered' centered>
       <Modal.Header closeButton>
@@ -43,6 +44,7 @@ function UserModal(props) {
           <Col className='text-left'>
             <b>
               {props.user.role.name === "admin" ? (
+                // IF YOU HAVE ADMIN ROLE, YOU GET A LITTLE CROWN
                 <>
                   <i className='fas fa-crown pr-1'></i> {props.user.role.name}
                 </>

@@ -23,6 +23,7 @@ const UsersTable = ({ users, setUsers, globalUser }) => {
 
   return (
     <>
+      {/* CONDITIONALLY RENDERING THIS INTRO TEXT BASED IF THERE ARE USERS ADDED OR NON */}
       <h1 className='pb-0'>Users</h1>
       {users.length ? (
         <small>
