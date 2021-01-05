@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import { Form, Button, Container } from "react-bootstrap"
 import uuid from "react-uuid"
 
-const AddUser = ({ users, setUsers, toastUserAdded }) => {
+const AddUser = ({ users, setUsers }) => {
+  // THE STATE CREATED FOR MAINTAINING THE INPUT FIELDS OF THE FORM
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
@@ -11,7 +12,6 @@ const AddUser = ({ users, setUsers, toastUserAdded }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     setUsers([
-      ...users,
       {
         id: uuid(),
         firstname: firstName,
@@ -19,11 +19,12 @@ const AddUser = ({ users, setUsers, toastUserAdded }) => {
         email: email,
         role: { id: users.length + 1, name: role },
       },
+      ...users,
+      // NEW!! NEWLY ADDED USERS ARE IN THE TOP NOW!
     ])
     setFirstName("")
     setLastName("")
     setEmail("")
-    toastUserAdded()
   }
 
   return (

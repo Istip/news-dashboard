@@ -2,14 +2,7 @@ import React, { useState } from "react"
 import { InputGroup, FormControl } from "react-bootstrap"
 import UserModal from "./UserModal"
 
-const User = ({
-  user,
-  index,
-  toastUserEdited,
-  handleChangeInput,
-  deleteUser,
-  globalUser,
-}) => {
+const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
   const [modalShow, setModalShow] = useState(false)
 
   return (
@@ -85,7 +78,6 @@ const User = ({
       <UserModal
         user={user}
         show={modalShow}
-        toastUserEdited={toastUserEdited}
         onHide={() => setModalShow(false)}
       />
     </>
