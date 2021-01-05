@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-// BOOTSTRAP COMPONENTS
+
+// IMPORTING BOOTSTRAP COMPONENTS
 import { Container, Row, Col } from "react-bootstrap"
-// PROJECT COMPONENTS
-import Header from "./components/Header"
-import MenuBar from "./components/MenuBar"
-import UsersTable from "./components/UsersTable"
-import PostsTable from "./components/PostsTable"
-import PostPreview from "./components/PostPreview"
-import Login from "./components/Login"
+
+// IMPORTING PROJECT'S COMPONENTS
+import Header from "./components/Layout/Header"
+import MenuBar from "./components/Layout/MenuBar"
+import UsersTable from "./components/User/UsersTable"
+import PostsTable from "./components/Posts/PostsTable"
+import PostPreview from "./components/Posts/PostPreview"
+import Login from "./components/Pages/Login"
 
 function App() {
   // USERS STATE
@@ -47,27 +49,30 @@ function App() {
 
   // POSTS STATE
   const [posts, setPosts] = useState([
-    // {
-    //   id: 1,
-    //   title: "First Post",
-    //   content:
-    //     "Colestiae nesciunt atque? Ad reiciendis, aperiam eveniet error beatae tempore, rem aspernatur autem velit eaque officiis minima voluptatibus odio, omnis harum quibusdam dolorum.",
-    //   author: "Admin",
-    //   postedAtDate: new Date().toLocaleDateString("hu-HU"),
-    //   postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-    // },
-    // {
-    //   id: 2,
-    //   title: "Second Post",
-    //   content:
-    //     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sunt aliquam corrupti facere excepturi, nisi ad ut earum quisquam debitis corporis libero dolores, soluta modi quos pariatur.",
-    //   author: "Admin",
-    //   postedAtDate: new Date().toLocaleDateString("hu-HU"),
-    //   postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-    // },
+    {
+      id: 1,
+      title: "First Post",
+      content:
+        "Colestiae nesciunt atque? Ad reiciendis, aperiam eveniet error beatae tempore, rem aspernatur autem velit eaque officiis minima voluptatibus odio, omnis harum quibusdam dolorum.",
+      author: "Admin",
+      postedAtDate: new Date().toLocaleDateString("hu-HU"),
+      postedAtTime: new Date().toLocaleTimeString("hu-HU"),
+    },
+    {
+      id: 2,
+      title: "Second Post",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sunt aliquam corrupti facere excepturi, nisi ad ut earum quisquam debitis corporis libero dolores, soluta modi quos pariatur.",
+      author: "Admin",
+      postedAtDate: new Date().toLocaleDateString("hu-HU"),
+      postedAtTime: new Date().toLocaleTimeString("hu-HU"),
+    },
   ])
 
+  // STATE FOR LOGIN VALIDATION
   const [login, setLogin] = useState(false)
+
+  // STATE FOR GLOBAL USER CHOOSEN FROM THE HEADER
   const [globalUser, setGlobalUser] = useState("admin")
 
   return (
@@ -87,6 +92,7 @@ function App() {
             </Col>
             <Col className='my-auto pt-3'>
               <Switch>
+                {/* MAIN ROUTE MESSAGE */}
                 <Route path='/' exact>
                   <div className='pt-5'>
                     <h1 className='display-3'>WELCOME</h1>
@@ -98,6 +104,8 @@ function App() {
                     )}
                   </div>
                 </Route>
+
+                {/* RETURNING USERS TABLE OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
                 <Route path='/users' exact>
                   {login ? (
                     <UsersTable
@@ -109,6 +117,8 @@ function App() {
                     <Login page='Users' />
                   )}
                 </Route>
+
+                {/* RETURNING POSTS TABLE OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
                 <Route path='/posts' exact>
                   {login ? (
                     <PostsTable
@@ -121,6 +131,8 @@ function App() {
                     <Login page='Posts' />
                   )}
                 </Route>
+
+                {/* RETURNING POST PREVIEW OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
                 <Route path='/posts/:title' exact>
                   {login ? (
                     <PostPreview posts={posts} />

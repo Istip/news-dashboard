@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 // TOASTIFY FOR REACT
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-// BOOTSTRAP COMPS
+// IMPORTING BOOTSTRAP COMPONENTS
 import {
   Table,
   Form,
@@ -63,6 +63,7 @@ const PostsTable = ({ users, posts, setPosts, globalUser }) => {
         pauseOnHover
       />
       <h1 className='pb-0'>Posts</h1>
+      {/* CONDITIONALLY RENDERING AN INFORMATIVE TEXT OR ASKING THE USER TO ADD A NEW POST */}
       {posts.length ? (
         <small>
           <p className='text-muted pt-0 pb-5'>

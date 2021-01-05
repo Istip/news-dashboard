@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom"
 import { Container, Card, Col, Row } from "react-bootstrap"
 
 const PostPreview = ({ posts }) => {
+  // DESTRUCTURED TITLE USED TO CREATE CUSTOM PAGES
+  // IT TAKES THE POST'S TITLE AND ADDS AFTER: '/POSTS/POST-TITLE'
   const { title } = useParams()
 
   return (
@@ -14,6 +16,7 @@ const PostPreview = ({ posts }) => {
           <Container key={index} className='mb-5'>
             <Card className='boxshadow p-5'>
               <Row>
+                {/* FIRST COLUMN TO SHOW ADDITIONAL POST INFORMATION */}
                 <Col lg={4}>
                   <h1>{post.title}</h1>
                   <hr className='mx-5' />
@@ -27,6 +30,8 @@ const PostPreview = ({ posts }) => {
                     </small>
                   </div>
                 </Col>
+
+                {/* SECOND COLUMN TO SHOW POST CONTENT AND BACK LINK */}
                 <Col lg={8} className='text-left'>
                   <p>{post.content}</p>
                   <Link to='/posts'>

@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Row, Col, Form } from "react-bootstrap"
 // IMPORTING IMAGES
-import logo from "../assets/minic.png"
-import avatar from "../assets/avatar.png"
+import logo from "../../assets/images/minic.png"
+import avatar from "../../assets/images/avatar.png"
 
 const NavigationBar = ({
   login,
@@ -14,9 +14,11 @@ const NavigationBar = ({
 }) => {
   return (
     <div className='d-flex justify-content-between p-3 bg-light border border-bottom'>
+      {/* RETURNING THE MAIN LOGO */}
       <Link to='/'>
         <img src={logo} width={32} height={32} alt='MINIC' />
       </Link>
+      {/* BASED ON THE LOGIN STATE IT RETURNS A LOG IN BUTTON OR USERS */}
       {login ? (
         <>
           <Row>
@@ -29,6 +31,7 @@ const NavigationBar = ({
                   onChange={(e) => setGlobalUser(e.target.value)}
                   value={globalUser}
                 >
+                  {/* MAPPING THROUGH ALL USERS AND YOU CAN CHOOSE WHICH ONE TO USE. BASED ON THEIR STATUS, THE WHOLE WEBSITE CHANGES */}
                   {users.map((user) => (
                     <option key={user.id} value={user.role.name}>
                       {user.firstname} {user.lastname} | {user.role.name}
