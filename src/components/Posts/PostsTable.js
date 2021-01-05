@@ -1,46 +1,20 @@
-import React, { useState } from "react"
-import uuid from "react-uuid"
+import React from "react"
 import { Link } from "react-router-dom"
 // TOASTIFY FOR REACT
-import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 // IMPORTING BOOTSTRAP COMPONENTS
 import {
   Table,
   Form,
-  Col,
   Container,
-  Button,
   InputGroup,
   FormControl,
 } from "react-bootstrap"
+import PostAdd from "./PostAdd"
 
 const PostsTable = ({ users, posts, setPosts, globalUser }) => {
-  const [title, setTitle] = useState("")
-  const [content, setContent] = useState("")
-  const [author, setAuthor] = useState("Admin")
-
-  const submitHandler = (e) => {
-    e.preventDefault()
-    setPosts([
-      ...posts,
-      {
-        id: uuid(),
-        title,
-        content,
-        author,
-        postedAtDate: new Date().toLocaleDateString("hu-HU"),
-        postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-      },
-    ])
-    setTitle("")
-    setContent("")
-    toast.success("Post has been created!")
-  }
-
   const deletePost = (id) => {
     setPosts(posts.filter((post) => post.id !== id))
-    toast.error("Post removed!")
   }
 
   const handleChangeInput = (index, event) => {
@@ -51,17 +25,6 @@ const PostsTable = ({ users, posts, setPosts, globalUser }) => {
 
   return (
     <div>
-      <ToastContainer
-        position='bottom-right'
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <h1 className='pb-0'>Posts</h1>
       {/* CONDITIONALLY RENDERING AN INFORMATIVE TEXT OR ASKING THE USER TO ADD A NEW POST */}
       {posts.length ? (
@@ -78,69 +41,9 @@ const PostsTable = ({ users, posts, setPosts, globalUser }) => {
           <p className='text-muted pt-0 pb-5'>Add a post!</p>
         </small>
       )}
-      <h3 className='pb-3'>Add new Post</h3>
-      <Container style={{ maxWidth: "800px" }} className='pb-5'>
-        <Form onSubmit={submitHandler}>
-          <Form.Group>
-            <Form.Row>
-              <Form.Label column lg={2}>
-                <b>Title:</b>
-              </Form.Label>
-              <Col>
-                <Form.Control
-                  onChange={(e) => setTitle(e.target.value)}
-                  value={title}
-                  type='text'
-                  placeholder='Enter post title'
-                  required
-                />
-              </Col>
-            </Form.Row>
-          </Form.Group>
-          <Form.Group>
-            <Form.Row>
-              <Form.Label column lg={2}>
-                <b>Posted by:</b>
-              </Form.Label>
-              <Col>
-                {users.length ? (
-                  <Form.Control
-                    as='select'
-                    onChange={(e) => setAuthor(e.target.value)}
-                    value={author}
-                    required
-                  >
-                    {users.map((user) => (
-                      <option key={user.id} value={user.firstname}>
-                        {user.firstname} {user.lastname}
-                      </option>
-                    ))}
-                  </Form.Control>
-                ) : (
-                  <p className='text-danger'>
-                    <b>Please add users!</b>
-                  </p>
-                )}
-              </Col>
-            </Form.Row>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>
-              <b>Post Content:</b>
-            </Form.Label>
-            <Form.Control
-              onChange={(e) => setContent(e.target.value)}
-              value={content}
-              as='textarea'
-              rows={5}
-              required
-            />
-          </Form.Group>
-          <Button type='submit'>
-            <i className='fas fa-paper-plane pr-2'></i> Post
-          </Button>
-        </Form>
-      </Container>
+
+      {/* COMPONENT TO ADD NEW POST */}
+      <PostAdd posts={posts} setPosts={setPosts} users={users} />
 
       <Container className='pb-5'>
         {posts.length ? (

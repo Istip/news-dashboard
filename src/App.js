@@ -70,7 +70,7 @@ function App() {
   ])
 
   // STATE FOR LOGIN VALIDATION
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(true)
 
   // STATE FOR GLOBAL USER CHOOSEN FROM THE HEADER
   const [globalUser, setGlobalUser] = useState("admin")
