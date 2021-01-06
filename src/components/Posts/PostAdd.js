@@ -73,7 +73,7 @@ const PostAdd = ({ posts, setPosts, users }) => {
                   >
                     {/* USING ARRAY MAPPING, WE CAN RETURN THE EXISTING USERS */}
                     {users.map((user) => (
-                      <option key={user.id} value={user.firstname}>
+                      <option key={user.uuid} value={user.firstname}>
                         {user.firstname} {user.lastname}
                       </option>
                     ))}

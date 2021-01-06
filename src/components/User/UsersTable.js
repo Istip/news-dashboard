@@ -10,7 +10,7 @@ const UsersTable = ({ users, setUsers, globalUser }) => {
 
   // DELETE USER FUNCTION TAKES AN ID AND CUTS IT OUT FROM THE EXISTING ARRAY USING THE ARRAY FILTERING JAVASCRIPT FUNCTION
   const deleteUser = (id) => {
-    setUsers(users.filter((user) => user.id !== id))
+    setUsers(users.filter((user) => user.uuid !== id))
   }
 
   // FUNCTION FOR HANDLING AND SAVING THE INPUT FIELDS

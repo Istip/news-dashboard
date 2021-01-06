@@ -76,7 +76,7 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
           <i
             style={{ cursor: "pointer" }}
             className='fas fa-trash text-danger pr-2'
-            onClick={() => deleteUser(user.id)}
+            onClick={() => deleteUser(user.uuid)}
           ></i>
         )}
 

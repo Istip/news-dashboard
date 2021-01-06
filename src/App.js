@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import axios from "axios"
 
 // IMPORTING BOOTSTRAP COMPONENTS
 import { Container, Row, Col } from "react-bootstrap"
 
 // IMPORTING PROJECT'S COMPONENTS
-import Header from "./components/Layout/Header"
+import NavigationBar from "./components/Layout/NavigationBar"
 import MenuBar from "./components/Layout/MenuBar"
 import UsersTable from "./components/User/UsersTable"
 import PostsTable from "./components/Posts/PostsTable"
@@ -13,39 +14,8 @@ import PostPreview from "./components/Posts/PostPreview"
 import Login from "./components/Pages/Login"
 
 function App() {
-  // USERS STATE
-  const [users, setUsers] = useState([
-    {
-      id: "02cd14b3-98ad-3b3d-bd57-95166a95f9cb",
-      firstname: "Admin",
-      lastname: "Doe",
-      email: "admin.doe@gmail.com",
-      role: {
-        id: 1,
-        name: "admin",
-      },
-    },
-    {
-      id: "20951f4a-45b6-3284-bc36-a13747b17cb3",
-      firstname: "Editor",
-      lastname: "Doe",
-      email: "editor.doe@gmail.com",
-      role: {
-        id: 2,
-        name: "editor",
-      },
-    },
-    {
-      id: "c68344cb-0f6f-3fd3-baad-0131f48cf7bb",
-      firstname: "User",
-      lastname: "Doe",
-      email: "user.doe@gmail.com",
-      role: {
-        id: 3,
-        name: "user",
-      },
-    },
-  ])
+  // SETTING USERS STATE AS AN EMPTY ARRAY BEFORE API CALL IN OUR USEEFFECT CALL
+  const [users, setUsers] = useState([])
 
   // POSTS STATE
   const [posts, setPosts] = useState([
@@ -75,10 +45,26 @@ function App() {
   // STATE FOR GLOBAL USER CHOOSEN FROM THE HEADER
   const [globalUser, setGlobalUser] = useState("admin")
 
+  // USEEFFECT HOOK WITH AXIOS TO MAKE THE GET API CALL
+  useEffect(() => {
+    axios
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://minic.dev/tasks/users.json"
+        // DUE THE API'S CORS POLICY THERE IS PROXY USED
+      )
+      .then((res) => {
+        setUsers(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+  // THIS EMPTY ARRAY MEANS THAT ONLY CALLS THE USERS API ONCE, WHEN THE PAGE LOADS
+
   return (
     <div className='App'>
       <Router>
-        <Header
+        <NavigationBar
           login={login}
           setLogin={setLogin}
           users={users}

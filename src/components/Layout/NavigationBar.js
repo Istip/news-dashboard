@@ -33,7 +33,7 @@ const NavigationBar = ({
                 >
                   {/* MAPPING THROUGH ALL USERS AND YOU CAN CHOOSE WHICH ONE TO USE. BASED ON THEIR STATUS, THE WHOLE WEBSITE CHANGES */}
                   {users.map((user) => (
-                    <option key={user.id} value={user.role.name}>
+                    <option key={user.uuid} value={user.role.name}>
                       {user.firstname} {user.lastname} | {user.role.name}
                     </option>
                   ))}
