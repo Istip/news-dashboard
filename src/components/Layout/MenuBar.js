@@ -1,6 +1,7 @@
 import React from "react"
-import "../../assets/styling/MenuBar.css"
+import "../../assets/css/MenuBar.css"
 import { Link } from "react-router-dom"
+import { LoginButton } from "./LoginButton"
 
 const MenuBar = ({ login, setLogin }) => {
   // FUNCTION TO HANDLE THE LOGIN STATE
@@ -21,9 +22,9 @@ const MenuBar = ({ login, setLogin }) => {
           <Link to='/posts'>Posts</Link>
         </li>
         <li className='menu__list-item pt-3'>
-          <div className='btn btn-sm btn-outline-danger' onClick={loginHandler}>
+          <LoginButton onClick={loginHandler}>
             {login ? "Log Out" : "Log In"}
-          </div>
+          </LoginButton>
         </li>
       </ul>
     </div>
