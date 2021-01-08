@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 
+// IMPORT PROJECT COMPONENTS
 import PostAdd from "./PostAdd"
 import Posts from "./Posts"
 
-const PostsTable = ({ users, posts, setPosts, globalUser }) => {
+// IMPORT GLOBAL USER CONTEXT, 'CAUSE IT WILL BE USED IN THE POSTS TABLE
+import { GlobalUserContext } from "../../context/GlobalUserContext"
+
+const PostsTable = ({ users, posts, setPosts }) => {
+  // DESTRUCTURING GLOBALUSER FROM THE GLOBALUSERCONTEXT'S VALUE
+  const [globalUser] = useContext(GlobalUserContext)
   return (
     <div>
       <h1 className='pb-0'>Posts</h1>

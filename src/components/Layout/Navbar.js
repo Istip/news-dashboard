@@ -1,18 +1,19 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Row, Col, Form } from "react-bootstrap"
-// IMPORTING IMAGES
+
+// IMPORT IMAGES
 import logo from "../../assets/images/minic.png"
 import avatar from "../../assets/images/avatar.png"
 import { LoginButton } from "./LoginButton"
 
-const NavigationBar = ({
-  login,
-  setLogin,
-  users,
-  globalUser,
-  setGlobalUser,
-}) => {
+// IMPORT GLOBAL USER CONTEXT, 'CAUSE IT WILL BE USED IN THE NAVBAR
+import { GlobalUserContext } from "../../context/GlobalUserContext"
+
+const Navbar = ({ login, setLogin, users }) => {
+  // DESTRUCTURING GLOBALUSER & SETGLOBALUSER FROM THE GLOBALUSERCONTEXT'S VALUE
+  const [globalUser, setGlobalUser] = useContext(GlobalUserContext)
+
   return (
     <div className='d-flex justify-content-between p-3 bg-light border border-bottom'>
       {/* RETURNING THE MAIN LOGO */}
@@ -54,4 +55,4 @@ const NavigationBar = ({
   )
 }
 
-export default NavigationBar
+export default Navbar

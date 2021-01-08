@@ -1,10 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+
+// IMPORT BOOTSTRAP COMPONENTS
 import Table from "react-bootstrap/Table"
+
+// IMPORT PROJECT COMPONENTS
 import UserAdd from "./UserAdd"
 import User from "./User"
 import UserModal from "./UserModal"
 
-const UsersTable = ({ users, setUsers, globalUser }) => {
+// IMPORT GLOBAL USER CONTEXT, 'CAUSE IT WILL BE USED IN THE USERS TABLE
+import { GlobalUserContext } from "../../context/GlobalUserContext"
+
+const UsersTable = ({ users, setUsers }) => {
+  // DESTRUCTURING GLOBALUSER FROM THE GLOBALUSERCONTEXT'S VALUE
+  const [globalUser] = useContext(GlobalUserContext)
+
   // THIS STATE IS RESPONSIBLE FOR SHOWING / HIDING THE INDIVIDUAL USER'S MODAL
   const [modalShow, setModalShow] = useState(false)
 

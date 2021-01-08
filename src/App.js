@@ -6,12 +6,15 @@ import axios from "axios"
 import { Container, Row, Col } from "react-bootstrap"
 
 // IMPORTING PROJECT'S COMPONENTS
-import NavigationBar from "./components/Layout/NavigationBar"
-import MenuBar from "./components/Layout/MenuBar"
+import Navbar from "./components/Layout/Navbar"
+import Menu from "./components/Layout/Menu"
 import UsersTable from "./components/User/UsersTable"
 import PostsTable from "./components/Posts/PostsTable"
 import PostPreview from "./components/Posts/PostPreview"
 import Login from "./components/Pages/Login"
+
+// IMPORT CONTEXT RESPONSIBLE FOR THE GLOBAL USER
+import { GlobalUserProvider } from "./context/GlobalUserContext"
 
 function App() {
   // SETTING USERS STATE AS AN EMPTY ARRAY BEFORE API CALL IN OUR USEEFFECT CALL
@@ -42,9 +45,6 @@ function App() {
   // STATE FOR LOGIN VALIDATION
   const [login, setLogin] = useState(true)
 
-  // STATE FOR GLOBAL USER CHOOSEN FROM THE HEADER
-  const [globalUser, setGlobalUser] = useState("admin")
-
   // USEEFFECT HOOK WITH AXIOS TO MAKE THE GET API CALL
   useEffect(() => {
     axios
@@ -63,74 +63,65 @@ function App() {
 
   return (
     <div className='App'>
-      <Router>
-        <NavigationBar
-          login={login}
-          setLogin={setLogin}
-          users={users}
-          globalUser={globalUser}
-          setGlobalUser={setGlobalUser}
-        />
-        <Container fluid>
-          <Row>
-            <Col md={2}>
-              <MenuBar login={login} setLogin={setLogin} />
-            </Col>
-            <Col className='my-auto pt-3'>
-              <Switch>
-                {/* MAIN ROUTE MESSAGE */}
-                <Route path='/' exact>
-                  <div className='pt-5'>
-                    <h1 className='display-3'>WELCOME</h1>
-                    <h4 className='text-muted'>to the news dashboard</h4>
-                    {!login && (
-                      <p className='pt-3 text-primary'>
-                        <b>Please log in to use the app!</b>
-                      </p>
+      <GlobalUserProvider>
+        <Router>
+          <Navbar login={login} setLogin={setLogin} users={users} />
+          <Container fluid>
+            <Row>
+              <Col md={2}>
+                <Menu login={login} setLogin={setLogin} />
+              </Col>
+              <Col className='my-auto pt-3'>
+                <Switch>
+                  {/* MAIN ROUTE MESSAGE */}
+                  <Route path='/' exact>
+                    <div className='pt-5'>
+                      <h1 className='display-3'>WELCOME</h1>
+                      <h4 className='text-muted'>to the news dashboard</h4>
+                      {!login && (
+                        <p className='pt-3 text-primary'>
+                          <b>Please log in to use the app!</b>
+                        </p>
+                      )}
+                    </div>
+                  </Route>
+
+                  {/* RETURNING USERS TABLE OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
+                  <Route path='/users' exact>
+                    {login ? (
+                      <UsersTable users={users} setUsers={setUsers} />
+                    ) : (
+                      <Login page='Users' />
                     )}
-                  </div>
-                </Route>
+                  </Route>
 
-                {/* RETURNING USERS TABLE OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
-                <Route path='/users' exact>
-                  {login ? (
-                    <UsersTable
-                      users={users}
-                      setUsers={setUsers}
-                      globalUser={globalUser}
-                    />
-                  ) : (
-                    <Login page='Users' />
-                  )}
-                </Route>
+                  {/* RETURNING POSTS TABLE OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
+                  <Route path='/posts' exact>
+                    {login ? (
+                      <PostsTable
+                        users={users}
+                        posts={posts}
+                        setPosts={setPosts}
+                      />
+                    ) : (
+                      <Login page='Posts' />
+                    )}
+                  </Route>
 
-                {/* RETURNING POSTS TABLE OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
-                <Route path='/posts' exact>
-                  {login ? (
-                    <PostsTable
-                      globalUser={globalUser}
-                      users={users}
-                      posts={posts}
-                      setPosts={setPosts}
-                    />
-                  ) : (
-                    <Login page='Posts' />
-                  )}
-                </Route>
-
-                {/* RETURNING POST PREVIEW OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
-                <Route path='/posts/:title' exact>
-                  {login ? (
-                    <PostPreview posts={posts} />
-                  ) : (
-                    <Login page='Post Preview' />
-                  )}
-                </Route>
-              </Switch>
-            </Col>
-          </Row>
-        </Container>
-      </Router>
+                  {/* RETURNING POST PREVIEW OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
+                  <Route path='/posts/:title' exact>
+                    {login ? (
+                      <PostPreview posts={posts} />
+                    ) : (
+                      <Login page='Post Preview' />
+                    )}
+                  </Route>
+                </Switch>
+              </Col>
+            </Row>
+          </Container>
+        </Router>
+      </GlobalUserProvider>
     </div>
   )
 }

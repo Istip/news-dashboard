@@ -1,9 +1,9 @@
 import React from "react"
-import "../../assets/css/MenuBar.css"
+import "../../assets/styles/Menu.css"
 import { Link } from "react-router-dom"
 import { LoginButton } from "./LoginButton"
 
-const MenuBar = ({ login, setLogin }) => {
+const Menu = ({ login, setLogin }) => {
   // FUNCTION TO HANDLE THE LOGIN STATE
   // IF YOU ARE LOGGED OUT, IT LOGS YOU IN AND VICE VERSA
   const loginHandler = (e) => {
@@ -31,4 +31,4 @@ const MenuBar = ({ login, setLogin }) => {
   )
 }
 
-export default MenuBar
+export default Menu
