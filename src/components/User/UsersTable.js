@@ -95,7 +95,9 @@ const UsersTable = ({ users, setUsers }) => {
       ) : (
         // IF THERE ARE NO USERS IN THE USERS ARRAY, YOU GET THIS WARNING TEXT
         <div>
-          <h3 className='text-danger'>No users to show!</h3>
+          <h3 className='text-danger'>
+            <b>No users to show!</b>
+          </h3>
         </div>
       )}
     </>

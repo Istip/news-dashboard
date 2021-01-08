@@ -1,6 +1,8 @@
 import React from "react"
 import "../../assets/styles/Menu.css"
 import { Link } from "react-router-dom"
+
+// IMPORT LOGIN BUTTON CREATED WITH STYLED COMPONENTS
 import { LoginButton } from "./LoginButton"
 
 const Menu = ({ login, setLogin }) => {

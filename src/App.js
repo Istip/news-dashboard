@@ -17,7 +17,7 @@ import Login from "./components/Pages/Login"
 import { GlobalUserProvider } from "./context/GlobalUserContext"
 
 function App() {
-  // SETTING USERS STATE AS AN EMPTY ARRAY BEFORE API CALL IN OUR USEEFFECT CALL
+  // SETTING USERS STATE AS AN EMPTY ARRAY BEFORE API CALL IN OUR USEEFFECT HOOK
   const [users, setUsers] = useState([])
 
   // POSTS STATE
@@ -50,7 +50,7 @@ function App() {
     axios
       .get(
         "https://cors-anywhere.herokuapp.com/https://minic.dev/tasks/users.json"
-        // DUE THE API'S CORS POLICY THERE IS PROXY USED
+        // DUE CORS POLICY PROXY IS USED TO GET THE JSON FILE
       )
       .then((res) => {
         setUsers(res.data)
@@ -59,7 +59,7 @@ function App() {
         console.log(err)
       })
   }, [])
-  // THIS EMPTY ARRAY MEANS THAT ONLY CALLS THE USERS API ONCE, WHEN THE PAGE LOADS
+  // DUE THE EMPTY ARRAY AS SECOND ARGUMENT, GETS ONLY TRIGGERED THE FIRST TIME THE PAGE LOADS
 
   return (
     <div className='App'>
