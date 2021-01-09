@@ -45,7 +45,7 @@ function App() {
   // STATE FOR LOGIN VALIDATION
   const [login, setLogin] = useState(true)
 
-  // USEEFFECT HOOK WITH AXIOS TO MAKE THE GET API CALL
+  // USEEFFECT HOOK WITH AXIOS TO MAKE THE GET API CALL FOR THE USERS
   useEffect(() => {
     axios
       .get(

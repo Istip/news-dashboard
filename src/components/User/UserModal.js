@@ -15,10 +15,7 @@ function UserModal(props) {
 
       <Modal.Body>
         <small>
-          <p className='text-center text-muted'>
-            <b>ID: </b>
-            {props.user.id}
-          </p>
+          <p className='text-center text-muted'>ID: {props.user.uuid}</p>
         </small>
         <Row>
           <Col className='text-right'>First Name:</Col>
