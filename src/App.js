@@ -59,7 +59,23 @@ function App() {
         console.log(err)
       })
   }, [])
-  // DUE THE EMPTY ARRAY AS SECOND ARGUMENT, GETS ONLY TRIGGERED THE FIRST TIME THE PAGE LOADS
+  // DUE THE EMPTY ARRAY AS SECOND ARGUMENT, THIS EFFECT WILL ONLY RUN ONCE
+
+  useEffect(() => {
+    axios
+      .post(
+        "https://cors-anywhere.herokuapp.com/https://minic.dev/tasks/users.php",
+        {
+          password: "password",
+        }
+      )
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [login])
 
   return (
     <div className='App'>

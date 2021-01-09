@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-// STYLED COMPONENTS BUTTON, WITH NESTED HOVER EFFECT
+// STYLED COMPONENTS BUTTON, WITH NESTED HOVER EFFECT & FOCUS
 export const LoginButton = styled.button`
   background: #dc3545;
   border: 1px solid #dc3545;
