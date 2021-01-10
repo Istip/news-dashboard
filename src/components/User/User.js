@@ -7,7 +7,7 @@ import { InputGroup, FormControl } from "react-bootstrap"
 // IMPORT PROP TYPES
 import PropTypes from "prop-types"
 
-const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
+const User = ({ user, index, handleChangeInput, deleteUser }) => {
   // THIS STATE IS RESPONSIBLE FOR SHOWING / HIDING THE INDIVIDUAL USER'S MODAL
   const [modalShow, setModalShow] = useState(false)
 
@@ -23,7 +23,6 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            disabled={globalUser === "user" ? true : false}
             name='firstname'
             value={user.firstname}
             type='text'
@@ -42,7 +41,6 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            disabled={globalUser === "user" ? true : false}
             name='lastname'
             value={user.lastname}
             type='text'
@@ -63,7 +61,6 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            disabled={globalUser === "user" ? true : false}
             name='email'
             value={user.email}
             type='text'
@@ -75,14 +72,12 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
       {/* LAST CELL IS THE ACTIONS CELL TO DELETE OR PREVIEW USER'S PROFILE*/}
       <td>
         {/* DELETE ICON ONLY AVAILABLE FOR USERS WITH ADMIN OR EDITOR ROLE */}
-        {globalUser !== "user" && (
-          <i
-            style={{ cursor: "pointer" }}
-            className='fas fa-trash text-danger pr-2'
-            onClick={() => deleteUser(user.uuid)}
-          ></i>
-        )}
-
+        <i
+          style={{ cursor: "pointer" }}
+          className='fas fa-trash text-danger pr-2'
+          onClick={() => deleteUser(user.uuid)}
+        ></i>
+        )
         {/* SHOW USER'S PROFILE IN MODAL, AVAILABLE FOR EVERY USER LOGGED IN */}
         <i
           style={{ cursor: "pointer" }}
@@ -103,16 +98,10 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
 
 export default User
 
-// DEFAULT PROPS
-User.defaultProps = {
-  globalUser: "admin",
-}
-
 // VALIDATING PROP TYPES
 User.propTypes = {
   user: PropTypes.object.isRequired,
   index: PropTypes.number,
   handleChangeInput: PropTypes.func,
   deleteUser: PropTypes.func,
-  globalUser: PropTypes.string.isRequired,
 }

@@ -67,10 +67,18 @@ const UsersTable = ({ users, setUsers }) => {
               {/* THE HEADER OF THE TABLE IS DYNAMIC, RENDERED ONLY ONCE */}
               <thead>
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Action</th>
+                  <td>
+                    <b>First Name</b>
+                  </td>
+                  <td>
+                    <b>Last Name</b>
+                  </td>
+                  <td>
+                    <b>Email</b>
+                  </td>
+                  <td>
+                    <b>Action</b>
+                  </td>
                 </tr>
               </thead>
 
@@ -79,7 +87,6 @@ const UsersTable = ({ users, setUsers }) => {
                 {users.map((user, index) => (
                   <tr key={index}>
                     <User
-                      globalUser={globalUser}
                       handleChangeInput={handleChangeInput}
                       key={index}
                       index={index}

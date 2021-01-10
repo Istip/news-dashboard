@@ -61,21 +61,23 @@ function App() {
   }, [])
   // DUE THE EMPTY ARRAY AS SECOND ARGUMENT, THIS EFFECT WILL ONLY RUN ONCE
 
+  // POST REQUEST TO LOGIN WITH EMAIL AND PASSWORD
+  // NOT WORKING YET
   useEffect(() => {
-    axios
-      .post(
-        "https://cors-anywhere.herokuapp.com/https://minic.dev/tasks/users.php",
-        {
-          email: "isticsek@gmail.com",
-          password: "password",
-        }
-      )
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    // axios
+    //   .post(
+    //     "https://cors-anywhere.herokuapp.com/https://minic.dev/tasks/users.php",
+    //     {
+    //       email: "isticsek@gmail.com",
+    //       password: "password",
+    //     }
+    //   )
+    //   .then((res) => {
+    //     console.log(res)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
   }, [login])
 
   return (
