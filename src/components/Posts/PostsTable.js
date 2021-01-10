@@ -13,6 +13,7 @@ import PropTypes from "prop-types"
 const PostsTable = ({ users, posts, setPosts }) => {
   // DESTRUCTURING GLOBALUSER FROM THE GLOBALUSERCONTEXT'S VALUE
   const [globalUser] = useContext(GlobalUserContext)
+
   return (
     <div>
       <h1 className='pb-0'>Posts</h1>

@@ -3,10 +3,13 @@ import React from "react"
 function Admin() {
   return (
     <div className='px-5'>
-      <h1>
-        Only users with <b className='text-danger'>admin</b> role can enter this
-        page!
-      </h1>
+      <h3>
+        Only users with{" "}
+        <span className='text-danger'>
+          <b>admin</b>
+        </span>{" "}
+        role can enter this page!
+      </h3>
     </div>
   )
 }

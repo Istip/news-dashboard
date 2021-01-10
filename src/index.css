@@ -1,3 +1,4 @@
+/* IMPORT  */
 @import url("./assets/styles/WebFonts.css");
 
 * {
@@ -5,14 +6,15 @@
   letter-spacing: -1px;
 }
 
-.App {
-  text-align: center;
-}
-
 body {
   margin: 0;
 }
 
+.App {
+  text-align: center;
+}
+
+/* SETTING THE FONT FAMILY START */
 p {
   font-family: "poppinsregular", sans-serif;
 }
@@ -20,7 +22,7 @@ p {
 strong,
 b,
 i {
-  font-family: "poppinsmedium", sans-serif;
+  font-family: "poppinsregular", sans-serif;
 }
 
 h1,
@@ -29,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "poppinsblack", sans-serif;
+  font-family: "poppinsmedium", sans-serif;
 }
 
 .display-1,
@@ -38,3 +40,4 @@ h6 {
 .display-4 {
   font-family: "poppinsmedium", sans-serif !important;
 }
+/* SETTING THE FONT FAMILY END */
