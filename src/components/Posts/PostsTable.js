@@ -21,7 +21,8 @@ const PostsTable = ({ users, posts, setPosts }) => {
       {posts.length ? (
         <small>
           <p className='text-muted pt-0 pb-5'>
-            Click the <i className='fas fa-eye'></i> to preview your post!
+            Click the <i className='fas fa-eye'></i> to preview your post! The{" "}
+            <i className='fas fa-trash'></i> will remove the selected post!
             <br />
             Only users with <b>admin</b> or <b>editor</b> role can edit or
             delete!

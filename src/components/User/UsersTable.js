@@ -45,9 +45,8 @@ const UsersTable = ({ users, setUsers }) => {
             <small>
               <p className='text-muted pt-0'>
                 Click the <i className='fas fa-eye'></i> to open user's modal!
-                <br />
-                Only users with <b>admin</b> or <b>editor</b> role can edit or
-                delete!
+                The <i className='fas fa-trash'></i> will remove the selected
+                user!
               </p>
             </small>
           ) : (
