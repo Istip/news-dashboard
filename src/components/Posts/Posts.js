@@ -1,8 +1,13 @@
 import React from "react"
 
-import Post from "./Post"
 // IMPORT BOOTSTRAP COMPONENTS
 import { Container, Table } from "react-bootstrap"
+
+// IMPORT PROJECT COMPONENT
+import Post from "./Post"
+
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
 
 const Posts = ({ posts, setPosts, globalUser }) => {
   return (
@@ -11,7 +16,7 @@ const Posts = ({ posts, setPosts, globalUser }) => {
         <>
           <hr className='pb-4 mx-5' />
           <Table striped bordered hover size='sm'>
-            {/* TABLE'S HEADER IS STATIC, SO IT'S RENDERING ONLY ONE TIME */}
+            {/* TABLE'S HEADER IS STATIC, SO IT'S RENDERED ONCE */}
             <thead>
               <tr>
                 <td>
@@ -58,3 +63,16 @@ const Posts = ({ posts, setPosts, globalUser }) => {
 }
 
 export default Posts
+
+// DEFAULT PROPS
+Posts.defaultProps = {
+  posts: [],
+  globalUser: "admin",
+}
+
+// VALIDATING PROP TYPES
+Posts.propTypes = {
+  posts: PropTypes.array,
+  setPosts: PropTypes.func,
+  globalUser: PropTypes.string.isRequired,
+}

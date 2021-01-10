@@ -1,5 +1,10 @@
 import React from "react"
+
+// IMPORT REACT BOOTSTRAP COMPONENTS
 import { Button, Modal, Row, Col } from "react-bootstrap"
+
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
 
 function UserModal(props) {
   // THIS COMPONENT RENDERS EVERY INDIVIDUAL USER'S INFO TO PREVIEW
@@ -60,3 +65,9 @@ function UserModal(props) {
 }
 
 export default UserModal
+
+// VALIDATING PROP TYPES
+UserModal.propTypes = {
+  user: PropTypes.object,
+  show: PropTypes.bool,
+}

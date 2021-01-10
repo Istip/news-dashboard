@@ -66,6 +66,7 @@ function App() {
       .post(
         "https://cors-anywhere.herokuapp.com/https://minic.dev/tasks/users.php",
         {
+          email: "isticsek@gmail.com",
           password: "password",
         }
       )

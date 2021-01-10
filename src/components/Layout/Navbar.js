@@ -10,6 +10,9 @@ import { LoginButton } from "./LoginButton"
 // IMPORT GLOBAL USER CONTEXT, 'CAUSE IT WILL BE USED IN THE NAVBAR
 import { GlobalUserContext } from "../../context/GlobalUserContext"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const Navbar = ({ login, setLogin, users }) => {
   // DESTRUCTURING GLOBALUSER & SETGLOBALUSER FROM THE GLOBALUSERCONTEXT'S VALUE
   const [globalUser, setGlobalUser] = useContext(GlobalUserContext)
@@ -56,3 +59,15 @@ const Navbar = ({ login, setLogin, users }) => {
 }
 
 export default Navbar
+
+// DEFAULT PROPS
+Navbar.defaultProps = {
+  users: [],
+}
+
+// VALIDATING PROPTYPES
+Navbar.propTypes = {
+  login: PropTypes.bool.isRequired,
+  setLogin: PropTypes.func,
+  users: PropTypes.array,
+}

@@ -1,5 +1,8 @@
 import React from "react"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const Login = ({ page }) => {
   // LOGIN PAGE TAKES ONLY ONE PROP: PAGE
   // THIS DEFINES WHAT TEXT TO RENDER IF THE USER IS LOGGED OUT, OR LOGS IN DURING THE USEAGE OF THE WEBSITE
@@ -21,3 +24,13 @@ const Login = ({ page }) => {
 }
 
 export default Login
+
+// DEFAULT PROPS
+Login.defaultProps = {
+  page: "News Dashboard",
+}
+
+// VALIDATING PROPTYPES
+Login.propTypes = {
+  page: PropTypes.string,
+}

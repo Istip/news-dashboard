@@ -4,6 +4,9 @@ import UserModal from "./UserModal"
 // IMPORTING BOOTSTRAP COMPONENTS
 import { InputGroup, FormControl } from "react-bootstrap"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
   // THIS STATE IS RESPONSIBLE FOR SHOWING / HIDING THE INDIVIDUAL USER'S MODAL
   const [modalShow, setModalShow] = useState(false)
@@ -99,3 +102,17 @@ const User = ({ user, index, handleChangeInput, deleteUser, globalUser }) => {
 }
 
 export default User
+
+// DEFAULT PROPS
+User.defaultProps = {
+  globalUser: "admin",
+}
+
+// VALIDATING PROP TYPES
+User.propTypes = {
+  user: PropTypes.object.isRequired,
+  index: PropTypes.number,
+  handleChangeInput: PropTypes.func,
+  deleteUser: PropTypes.func,
+  globalUser: PropTypes.string.isRequired,
+}

@@ -2,6 +2,9 @@ import React, { useState } from "react"
 import { Form, Button, Container } from "react-bootstrap"
 import uuid from "react-uuid"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const AddUser = ({ users, setUsers }) => {
   // THE STATE CREATED FOR MAINTAINING THE INPUT FIELDS OF THE FORM
   const [firstName, setFirstName] = useState("")
@@ -97,3 +100,14 @@ const AddUser = ({ users, setUsers }) => {
 }
 
 export default AddUser
+
+// DEFAULT PROPS
+AddUser.defaultProps = {
+  users: [],
+}
+
+// VALIDATING PROP TYPES
+AddUser.propTypes = {
+  users: PropTypes.array,
+  setUsers: PropTypes.func,
+}

@@ -7,6 +7,9 @@ import Posts from "./Posts"
 // IMPORT GLOBAL USER CONTEXT, 'CAUSE IT WILL BE USED IN THE POSTS TABLE
 import { GlobalUserContext } from "../../context/GlobalUserContext"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const PostsTable = ({ users, posts, setPosts }) => {
   // DESTRUCTURING GLOBALUSER FROM THE GLOBALUSERCONTEXT'S VALUE
   const [globalUser] = useContext(GlobalUserContext)
@@ -39,3 +42,16 @@ const PostsTable = ({ users, posts, setPosts }) => {
 }
 
 export default PostsTable
+
+// DEFAULT PROPS
+PostsTable.defaultProps = {
+  users: [],
+  posts: [],
+}
+
+// VALIDATING PROP TYPES
+PostsTable.propTypes = {
+  users: PropTypes.array,
+  posts: PropTypes.array,
+  setPosts: PropTypes.func,
+}

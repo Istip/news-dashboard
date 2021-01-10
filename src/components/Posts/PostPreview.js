@@ -1,7 +1,11 @@
 import React from "react"
 import { Link, useParams } from "react-router-dom"
+
 // BOOTSTRAP COMPONENTS
 import { Container, Card, Col, Row } from "react-bootstrap"
+
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
 
 const PostPreview = ({ posts }) => {
   // DESTRUCTURED TITLE USED TO CREATE CUSTOM PAGES
@@ -50,3 +54,8 @@ const PostPreview = ({ posts }) => {
 }
 
 export default PostPreview
+
+// VALIDATING PROP TYPES
+PostPreview.propTypes = {
+  posts: PropTypes.array.isRequired,
+}

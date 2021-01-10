@@ -5,6 +5,9 @@ import { Link } from "react-router-dom"
 // IMPORT LOGIN BUTTON CREATED WITH STYLED COMPONENTS
 import { LoginButton } from "./LoginButton"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const Menu = ({ login, setLogin }) => {
   // FUNCTION TO HANDLE THE LOGIN STATE
   // IF YOU ARE LOGGED OUT, IT LOGS YOU IN AND VICE VERSA
@@ -34,3 +37,9 @@ const Menu = ({ login, setLogin }) => {
 }
 
 export default Menu
+
+// VALIDATING PROPTYPES
+Menu.propTypes = {
+  login: PropTypes.bool.isRequired,
+  setLogin: PropTypes.func,
+}

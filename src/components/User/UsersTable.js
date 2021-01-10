@@ -8,6 +8,9 @@ import UserAdd from "./UserAdd"
 import User from "./User"
 import UserModal from "./UserModal"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 // IMPORT GLOBAL USER CONTEXT, 'CAUSE IT WILL BE USED IN THE USERS TABLE
 import { GlobalUserContext } from "../../context/GlobalUserContext"
 import Admin from "../Pages/Admin"
@@ -112,3 +115,14 @@ const UsersTable = ({ users, setUsers }) => {
 }
 
 export default UsersTable
+
+// DEFAULT PROPS
+UsersTable.defaultProps = {
+  users: [],
+}
+
+// VALIDATING PROP TYPES
+UsersTable.propTypes = {
+  users: PropTypes.array,
+  setUsers: PropTypes.func,
+}

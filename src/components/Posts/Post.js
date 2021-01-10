@@ -1,7 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
+
 // IMPORTING BOOTSTRAP COMPONENTS
 import { InputGroup, FormControl, Form } from "react-bootstrap"
+
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
 
 const Post = ({ post, posts, index, setPosts, globalUser }) => {
   // DELETE POST FUNCTION TAKES AN ID AND CUTS IT OUT FROM THE EXISTING ARRAY USING THE ARRAY FILTERING JAVASCRIPT FUNCTION
@@ -88,3 +92,12 @@ const Post = ({ post, posts, index, setPosts, globalUser }) => {
 }
 
 export default Post
+
+// VALIDATING PROPS
+Post.propTypes = {
+  post: PropTypes.object.isRequired,
+  posts: PropTypes.array,
+  index: PropTypes.number,
+  setPosts: PropTypes.func,
+  globalUser: PropTypes.string.isRequired,
+}

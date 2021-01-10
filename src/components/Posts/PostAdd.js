@@ -4,6 +4,9 @@ import uuid from "react-uuid"
 // IMPORTING BOOTSTRAP COMPONENTS
 import { Container, Form, Col, Button } from "react-bootstrap"
 
+// IMPORT PROP TYPES
+import PropTypes from "prop-types"
+
 const PostAdd = ({ posts, setPosts, users }) => {
   // BASIC STATES FOR HANDLING THE POST ADD COMPONENTS INPUT FIELDS
   const [title, setTitle] = useState("")
@@ -112,3 +115,16 @@ const PostAdd = ({ posts, setPosts, users }) => {
 }
 
 export default PostAdd
+
+// DEFAULT PROPS
+PostAdd.defaultProps = {
+  posts: [],
+  users: [],
+}
+
+// VALIDATING PROP TYPES
+PostAdd.propTypes = {
+  posts: PropTypes.array,
+  setPosts: PropTypes.func,
+  users: PropTypes.array,
+}
