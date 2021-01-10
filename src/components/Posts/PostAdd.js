@@ -7,6 +7,9 @@ import { Container, Form, Col, Button } from "react-bootstrap"
 // IMPORT PROP TYPES
 import PropTypes from "prop-types"
 
+// IMPORT NOTIFICATION FUNCTION IT WILL BE USED IN THIS COMPONENT
+import { notify } from "../Utils/Notification"
+
 const PostAdd = ({ posts, setPosts, users }) => {
   // BASIC STATES FOR HANDLING THE POST ADD COMPONENTS INPUT FIELDS
   const [title, setTitle] = useState("")
@@ -35,6 +38,9 @@ const PostAdd = ({ posts, setPosts, users }) => {
     // SETTING THE STATES BELOW, IT EMPTIES THE USED INPUT FIELDS
     setTitle("")
     setContent("")
+
+    // DISPLAYING A MESSAGE FOR THE SUBMITTED POST
+    notify("New post added!", "4BB511")
   }
 
   return (

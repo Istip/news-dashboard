@@ -16,34 +16,37 @@ import Login from "./components/Pages/Login"
 // IMPORT CONTEXT RESPONSIBLE FOR THE GLOBAL USER
 import { GlobalUserProvider } from "./context/GlobalUserContext"
 
+// IMPORT NOTIFICATION COMPONENT WHICH IS RESPONSIBLE IN THE MESSAGES DISPLAYED IN THE RIGHT BOTTOM SIDE OF THE WEBSITE WHEN TRIGGERED
+import Notification from "./components/Utils/Notification"
+
 function App() {
   // SETTING USERS STATE AS AN EMPTY ARRAY BEFORE API CALL IN OUR USEEFFECT HOOK
   const [users, setUsers] = useState([])
 
   // POSTS STATE
   const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "First Post",
-      content:
-        "Colestiae nesciunt atque? Ad reiciendis, aperiam eveniet error beatae tempore, rem aspernatur autem velit eaque officiis minima voluptatibus odio, omnis harum quibusdam dolorum.",
-      author: "Admin",
-      postedAtDate: new Date().toLocaleDateString("hu-HU"),
-      postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-    },
-    {
-      id: 2,
-      title: "Second Post",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sunt aliquam corrupti facere excepturi, nisi ad ut earum quisquam debitis corporis libero dolores, soluta modi quos pariatur.",
-      author: "Admin",
-      postedAtDate: new Date().toLocaleDateString("hu-HU"),
-      postedAtTime: new Date().toLocaleTimeString("hu-HU"),
-    },
+    // {
+    //   id: 1,
+    //   title: "First Post",
+    //   content:
+    //     "Colestiae nesciunt atque? Ad reiciendis, aperiam eveniet error beatae tempore, rem aspernatur autem velit eaque officiis minima voluptatibus odio, omnis harum quibusdam dolorum.",
+    //   author: "Admin",
+    //   postedAtDate: new Date().toLocaleDateString("hu-HU"),
+    //   postedAtTime: new Date().toLocaleTimeString("hu-HU"),
+    // },
+    // {
+    //   id: 2,
+    //   title: "Second Post",
+    //   content:
+    //     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, sunt aliquam corrupti facere excepturi, nisi ad ut earum quisquam debitis corporis libero dolores, soluta modi quos pariatur.",
+    //   author: "Admin",
+    //   postedAtDate: new Date().toLocaleDateString("hu-HU"),
+    //   postedAtTime: new Date().toLocaleTimeString("hu-HU"),
+    // },
   ])
 
   // STATE FOR LOGIN VALIDATION
-  const [login, setLogin] = useState(true)
+  const [login, setLogin] = useState(false)
 
   // USEEFFECT HOOK WITH AXIOS TO MAKE THE GET API CALL FOR THE USERS
   useEffect(() => {
@@ -153,6 +156,9 @@ function App() {
           </Container>
         </Router>
       </GlobalUserProvider>
+
+      {/* NOTIFICATION COMPONENT MOUNTED, CAN BE CALLED WHEN NEEDED */}
+      <Notification />
     </div>
   )
 }

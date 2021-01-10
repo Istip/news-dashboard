@@ -7,10 +7,14 @@ import { InputGroup, FormControl, Form } from "react-bootstrap"
 // IMPORT PROP TYPES
 import PropTypes from "prop-types"
 
+// IMPORT NOTIFICATION FUNCTION IT WILL BE USED IN THIS COMPONENT
+import { notify } from "../Utils/Notification"
+
 const Post = ({ post, posts, index, setPosts, globalUser }) => {
   // DELETE POST FUNCTION TAKES AN ID AND CUTS IT OUT FROM THE EXISTING ARRAY USING THE ARRAY FILTERING JAVASCRIPT FUNCTION
   const deletePost = (id) => {
     setPosts(posts.filter((post) => post.id !== id))
+    notify("Post removed!", "BF0000")
   }
 
   // FUNCTION FOR HANDLING AND SAVING THE INPUT FIELDS

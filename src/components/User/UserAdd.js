@@ -5,12 +5,15 @@ import uuid from "react-uuid"
 // IMPORT PROP TYPES
 import PropTypes from "prop-types"
 
+// IMPORT NOTIFICATION FUNCTION IT WILL BE USED IN THIS COMPONENT
+import { notify } from "../Utils/Notification"
+
 const AddUser = ({ users, setUsers }) => {
   // THE STATE CREATED FOR MAINTAINING THE INPUT FIELDS OF THE FORM
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
-  const [role, setRole] = useState("user")
+  const [role, setRole] = useState("admin")
 
   // THE HANDLER FUNCTION FOR THE FORM
   // THE FUNCTION TAKES 'E' AS THE EVENT AND PREVENTS REFRESHING THE PAGE
@@ -31,11 +34,14 @@ const AddUser = ({ users, setUsers }) => {
     setFirstName("")
     setLastName("")
     setEmail("")
+    // FINALLY WE GET A NOTIFICATION IN THE BOTTOM RIGHT SIDE OF THE WEBSITE
+    notify("New user added!", "4BB511")
   }
 
   return (
     <Container className='text-center py-5' style={{ maxWidth: "500px" }}>
       <h3 className='pb-3'>Add new User</h3>
+
       <Form onSubmit={submitHandler}>
         <Form.Group>
           {/* THIS IS THE INPUT FOR THE FIRST NAME */}
@@ -81,12 +87,11 @@ const AddUser = ({ users, setUsers }) => {
             required
             value={role}
             name='role'
-            placeholder='Enter Email Adress'
             onChange={(e) => setRole(e.target.value)}
           >
-            <option>user</option>
-            <option>editor</option>
             <option>admin</option>
+            <option>editor</option>
+            <option>user</option>
           </Form.Control>
         </Form.Group>
 

@@ -7,6 +7,9 @@ import { InputGroup, FormControl } from "react-bootstrap"
 // IMPORT PROP TYPES
 import PropTypes from "prop-types"
 
+// IMPORT NOTIFICATION FUNCTION IT WILL BE USED IN THIS COMPONENT
+import { notify } from "../Utils/Notification"
+
 const User = ({ user, index, handleChangeInput, deleteUser }) => {
   // THIS STATE IS RESPONSIBLE FOR SHOWING / HIDING THE INDIVIDUAL USER'S MODAL
   const [modalShow, setModalShow] = useState(false)
@@ -71,11 +74,11 @@ const User = ({ user, index, handleChangeInput, deleteUser }) => {
 
       {/* LAST CELL IS THE ACTIONS CELL TO DELETE OR PREVIEW USER'S PROFILE*/}
       <td>
-        {/* DELETE ICON ONLY AVAILABLE FOR USERS WITH ADMIN OR EDITOR ROLE */}
         <i
           style={{ cursor: "pointer" }}
           className='fas fa-trash text-danger pr-2'
           onClick={() => deleteUser(user.uuid)}
+          onMouseUp={() => notify("User removed!", "BF0000")}
         ></i>
 
         {/* SHOW USER'S PROFILE IN MODAL, AVAILABLE FOR EVERY USER LOGGED IN */}
