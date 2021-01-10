@@ -2,12 +2,12 @@ import React from "react"
 import { Link, useParams } from "react-router-dom"
 
 // BOOTSTRAP COMPONENTS
-import { Container, Card, Col, Row } from "react-bootstrap"
+import { Container, Card, Col, Row, Form } from "react-bootstrap"
 
 // IMPORT PROP TYPES
 import PropTypes from "prop-types"
 
-const PostPreview = ({ posts }) => {
+const PostPreview = ({ posts, handleChangeInput }) => {
   // DESTRUCTURED TITLE USED TO CREATE CUSTOM PAGES
   // IT TAKES THE POST'S TITLE AND ADDS AFTER: '/POSTS/POST-TITLE'
   const { title } = useParams()
@@ -35,14 +35,24 @@ const PostPreview = ({ posts }) => {
                   </div>
                 </Col>
 
-                {/* SECOND COLUMN TO SHOW POST CONTENT AND BACK LINK */}
+                {/* SECOND COLUMN TO SHOW POST CONTENT, EDITABLE + A BACK LINK */}
                 <Col lg={8} className='text-left'>
-                  <p>{post.content}</p>
+                  <Form.Control
+                    name='content'
+                    size='md'
+                    value={post.content}
+                    as='textarea'
+                    rows={6}
+                    required
+                    onChange={(event) => handleChangeInput(index, event)}
+                  />
                   <Link to='/posts'>
-                    <b>
-                      <i className='fas fa-long-arrow-alt-left pr-1'></i> Back
-                      to Posts
-                    </b>
+                    <div className='pt-2'>
+                      <b>
+                        <i className='fas fa-long-arrow-alt-left pr-1'></i> Back
+                        to Posts
+                      </b>
+                    </div>
                   </Link>
                 </Col>
               </Row>
@@ -58,4 +68,5 @@ export default PostPreview
 // VALIDATING PROP TYPES
 PostPreview.propTypes = {
   posts: PropTypes.array.isRequired,
+  handleChangeInput: PropTypes.func,
 }

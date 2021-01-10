@@ -77,7 +77,7 @@ const User = ({ user, index, handleChangeInput, deleteUser }) => {
           className='fas fa-trash text-danger pr-2'
           onClick={() => deleteUser(user.uuid)}
         ></i>
-        )
+
         {/* SHOW USER'S PROFILE IN MODAL, AVAILABLE FOR EVERY USER LOGGED IN */}
         <i
           style={{ cursor: "pointer" }}

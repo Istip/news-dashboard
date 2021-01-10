@@ -47,7 +47,7 @@ const Post = ({ post, posts, index, setPosts, globalUser }) => {
       </td>
 
       {/* SECOND CELL CONTAINS THE CONTENT OF THE POST */}
-      <td style={{ maxWidth: "500px" }} className='p-3'>
+      <td style={{ maxWidth: "600px" }} className='p-3'>
         <Form.Control
           disabled={globalUser === "user" ? true : false}
           name='content'

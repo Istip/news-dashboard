@@ -80,6 +80,14 @@ function App() {
     //   })
   }, [login])
 
+  // FUNCTION USED TO CHANGE THE CONTENT OF THE POST
+  // IT IS PASSED DOWN TO THE POST PREVIEW PAGE
+  const handleChangeInput = (index, event) => {
+    const values = [...posts]
+    values[index][event.target.name] = event.target.value
+    setPosts(values)
+  }
+
   return (
     <div className='App'>
       <GlobalUserProvider>
@@ -130,7 +138,11 @@ function App() {
                   {/* RETURNING POST PREVIEW OR LOGIN COMPONENT BASED ON LOGIN STATUS */}
                   <Route path='/posts/:title' exact>
                     {login ? (
-                      <PostPreview posts={posts} />
+                      <PostPreview
+                        posts={posts}
+                        setPosts={setPosts}
+                        handleChangeInput={handleChangeInput}
+                      />
                     ) : (
                       <Login page='Post Preview' />
                     )}
